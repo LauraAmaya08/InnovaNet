@@ -1,0 +1,51 @@
+{
+    "clientes": [
+        {
+            "nombre": "Jaime",
+            "documento": 1234567890,
+            "email": "jaimejaime@gmail.com",
+            "telefono": 3118652669,
+            "telefono_2": 3102040890,
+            "compras": null,
+            "ciudad": "Bucaramanga",
+            "direccion": "Calle 10 carrera 5",
+            "interacciones": {
+                "servicio_cliente": null,
+                "reclamaciones": null,
+                "sugerencias": null
+            }
+        }
+    ],
+    "servicios": [
+        {
+            "nombre_serv": "fibra optica",
+            "codigo": 12345678,
+            "categoria": "Hogar",
+            "descripcion": "Descubre el futuro de la conectividad con Claro Fibra optica! Sumergete en un universo de velocidad, fiabilidad y tecnologia de vanguardia. Conecta todos tus dispositivos a una red ultrarrapida que te llevara a nuevas alturas de streaming sin interrupciones, juegos en linea sin retardos y descargas instantaneas. Di adios a los tiempos de espera y da la bienvenida a la era de la velocidad con Claro Fibra optica!",
+            "precio": 120000
+        }
+    ],
+    "productos": [
+        {
+            "nombre": "Xiaomi Redmi Note 13 Pro",
+            "codigo": 123456,
+            "marca": "Xiaomi",
+            "categoria": "Tecnologia",
+            "caracteristicas": [
+                "Memoria interna: 256 GB",
+                "RAM: 8 GB",
+                "Sistema operativo: Android 13"
+            ],
+            "precio": 999000,
+            "garantia": "1 a"
+        }
+    ],
+    "ventas": [
+        {
+            "vendido": "prepago",
+            "fecha": "17/12/23",
+            "cantidad": 2,
+            "estado": "pagado"
+        }
+    ]
+}
