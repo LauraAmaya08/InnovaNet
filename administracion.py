@@ -285,3 +285,81 @@ def registrar_compra(datos):
             else:
                 print("Saliste de Adquiere los productos Claro!")
     return datos
+
+def encuesta_publicidad():
+    celulares= 0
+    hogar= 0
+    computadores=0
+    streaming=0
+    servicio_movil=0
+
+
+    print("Bienvenido a la encuesta de preferencias Claro!".center(60)) 
+    print("En Claro nos esforzamos por brindarte servicios y productos que se adapten perfectamente a tus necesidades y preferencias. Para asegurarnos de que recibas la mejor experiencia posible, nos gustaría conocer más sobre ti y tus intereses, debes terminar la encuesta hasta el final ¡Empecemos!")
+    print("1. ¿Que edad tienes?\n1. 18-25 años\n2. 26-35 años\n3. 36-45 años \n4. Mayor de 45 años")
+    opcion= opc()
+    while not opcion in [1,2,3,4]:
+        opc()
+        print("Opcion incorrecta, elige una valida!")
+    if opcion==1:
+        celulares+=2
+        computadores+=2
+        streaming+=2
+        servicio_movil+=2
+    elif opcion==2 or opcion==3:
+        celulares+=2
+        computadores+=2
+        streaming+=2
+        servicio_movil+=2
+        hogar+=2
+    else:
+        celulares+=1
+        computadores+=1
+        streaming+=2
+        servicio_movil+=2
+        hogar+=2
+
+    print("2.¿Con qué frecuencia usas servicios de streaming de video?\n1. Diariamente\n2. Una vez por semana\n3. Varias veces al mes  \n4. Casi nunca")
+    opcion= opc()
+    while not opcion in [1,2,3,4]:
+        opc()
+        print("Opcion incorrecta, elige una valida!")
+    if opcion==1:
+        streaming+=3
+    elif opcion==2: 
+        streaming+=2
+    elif opcion==3:
+        streaming+=1   
+    else:
+        streaming=streaming
+    
+    print("2.¿Con qué frecuencia usas servicios de streaming de video?\n1. Diariamente\n2. Una vez por semana\n3. Varias veces al mes  \n4. Casi nunca")
+    opcion= opc()
+    while not opcion in [1,2,3,4]:
+        opc()
+        print("Opcion incorrecta, elige una valida!")
+    if opcion==1:
+        streaming+=3
+    elif opcion==2: 
+        streaming+=2
+    elif opcion==3:
+        streaming+=1   
+    else:
+        streaming=streaming
+
+    print("3. ¿Cuánto tiempo pasas en tus dispositivos móviles al día?\n 1. Menos de 1 hora\n2. 1-2 horas\n3. 2-4 horas\n4. Más de 6 horas")
+    opcion= opc()
+    while not opcion in [1,2,3,4]:
+        opc()
+        print("Opcion incorrecta, elige una valida!")
+    if opcion==1:
+        servicio_movil+=1
+    elif opcion==2: 
+        servicio_movil+=2
+    elif opcion==3:
+        servicio_movil+=3
+    else:
+        servicio_movil+=4
+
+    
+        
