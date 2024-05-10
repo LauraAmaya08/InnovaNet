@@ -6,31 +6,32 @@
             "email": "lauragil@gmail.com",
             "telefono": "3102040809",
             "ciudad": "Bucaramanga",
-            "direccion": "calle 33 no. 14-20"
+            "direccion": "calle 33 no. 14-20",
+            "compras": 4,
+            "adquiridos": [
+                "Prepago",
+                "Portatil Lenovo 15ALC6 R5 8GB 128GB +1TB W11 Azul"
+            ]
         },
         {
             "nombre": "Juan",
-            "codigo": "amoamiesposa",
+            "codigo": "65983738-9c73-4ac2-abf6-42bfbbe66dc6",
             "email": "juanito@gmail.com",
             "telefono": "3456754120",
             "ciudad": "barranquilla",
-            "direccion": "calle 9 cra 36"
+            "direccion": "calle 9 cra 36",
+            "compras": 0,
+            "adquiridos": []
         },
         {
             "nombre": "Miguel",
-            "codigo": "ti423",
+            "codigo": "ce0766bb-3b3d-4012-ad6b-41c01603b024",
             "email": "miguelito200@gmail.com",
             "telefono": "3390181749",
             "ciudad": "cauca",
-            "direccion": "occidente 3 cra 12"
-        },
-        {
-            "nombre": "Angelica",
-            "codigo": "ancg67",
-            "email": "angelita@gmail.com",
-            "telefono": "3456718091",
-            "ciudad": "valledupar",
-            "direccion": "avenida diomedes no.5"
+            "direccion": "occidente 3 cra 12",
+            "compras": 0,
+            "adquiridos": []
         },
         {
             "nombre": "Vanessa",
@@ -38,13 +39,35 @@
             "email": "vanessitalinda@hotmail.com",
             "telefono": "3457160978",
             "ciudad": "amazonas",
-            "direccion": "calle 18 cra 5-10"
+            "direccion": "calle 18 cra 5-10",
+            "compras": 0,
+            "adquiridos": []
+        },
+        {
+            "nombre": "Jose",
+            "codigo": "67be1588-8c96-409f-a354-2febdbd602cb",
+            "email": "josesote@hotmail.com",
+            "telefono": "3458829010",
+            "ciudad": "cartagena",
+            "direccion": "calle 10 #12-15",
+            "compras": 0,
+            "adquiridos": []
+        },
+        {
+            "nombre": "maria",
+            "codigo": "4b81a67e-fb64-40d7-8556-265c82a0d8d5",
+            "email": "marimari@hotmail.com",
+            "telefono": "3102060890",
+            "ciudad": "santa marta",
+            "direccion": "calle 18 #3-5",
+            "compras": 0,
+            "adquiridos": []
         }
     ],
     "servicios": [
         {
             "nombre_serv": "fibra optica",
-            "codigo": "12345678",
+            "codigo": "35a653ea-1228-4cfc-afac-283b23e0312e",
             "categoria": "Hogar",
             "descripcion": "Descubre el futuro de la conectividad con Claro Fibra optica! Sumergete en un universo de velocidad, fiabilidad y tecnologia de vanguardia. Conecta todos tus dispositivos a una red ultrarrapida que te llevara a nuevas alturas de streaming sin interrupciones, juegos en linea sin retardos y descargas instantaneas. Di adios a los tiempos de espera y da la bienvenida a la era de la velocidad con Claro Fibra optica!",
             "precio": "150000"
@@ -62,21 +85,40 @@
             "categoria": "Servicio movil",
             "descripcion": "Claro te ofrece un servicio prepago simple y flexible. Recargas tu saldo y controlas tus gastos. Sin contratos largos ni verificaciones. Administra todo desde tu celular con nuestra app. Recargas, hablas y navegas a tu manera!",
             "precio": "Desde 39000"
+        },
+        {
+            "nombre_serv": "Netflix",
+            "codigo": "335b40df-b2e9-42fb-86f4-8a8ad9d30cf4",
+            "categoria": "Streaming",
+            "descripcion": "Claro te brinda acceso a Netflix, una plataforma lider en entretenimiento con una extensa biblioteca de peliculas, series y documentales. Disfruta de contenido exclusivo y populares producciones internacionales desde cualquier dispositivo con conexion a internet.",
+            "precio": "45500/mes"
+        },
+        {
+            "nombre_serv": "Telefonia fija",
+            "codigo": "f06f4bde-e23d-490b-9453-911250ef3c85",
+            "categoria": "Hogar",
+            "descripcion": "Claro proporciona servicios de telefonia fija confiables y accesibles, ideales para mantener una comunicacion clara y estable en el hogar o la oficina. Con una amplia cobertura y opciones de planes personalizables, Claro te ofrece la tranquilidad de contar con un servicio de telefonia fija de calidad para tus necesidades de comunicacion.",
+            "precio": "50000"
         }
     ],
     "productos": [
         {
             "nombre": "Xiaomi Redmi Note 13 Pro",
-            "codigo": "123456",
+            "codigo": "b7aaf1ea-2cee-4444-b2d6-8440fca7fe01",
             "marca": "Xiaomi",
-            "categoria": "Tecnologia",
-            "caracteristicas": [
-                "Memoria interna: 256 GB",
-                "RAM: 8 GB",
-                "Sistema operativo: Android 13"
-            ],
+            "categoria": "Celulares",
+            "caracteristicas": "Memoria interna: 256 GB, RAM: 8 GB,Sistema operativo: Android 13",
             "precio": "999000",
             "garantia": "1 a"
+        },
+        {
+            "nombre": "Portatil Lenovo 15ALC6 R5 8GB 128GB +1TB W11 Azul",
+            "codigo": "6eeb22bb-327f-4087-b45d-aa99b31b83e1",
+            "categoria": "computadoras",
+            "marca": "lenovo",
+            "caracteristicas": "Portatil Lenovo IP 3 15ALC6 AMD Ryzen 5 5500U 156 Pulgadas FHD Memoria 8GB Estado Solido 128GB + 1TB Windows 11 Color Azul",
+            "garantia": "9 meses",
+            "precio": "1900999"
         }
     ],
     "ventas": [

@@ -10,7 +10,7 @@ def menu_cliente():
     print("-------------------------------------------------------------------------")
     print("¡Bienvenido al Portal de Usuarios de Claro Colombia!\n".center(60))
     print("-------------------------------------------------------------------------")
-    print("A continuacion ingrese la opcion que quieres realizar:\n1. Llena encuesta Claro!\n2. Hecho especialmente para ti!\n3. Servicio al cliente\n4. Reclamaciones\n5. Sugerencias\n6. Salir\n")
+    print("A continuacion ingrese la opcion que quieres realizar:\n1. Llena encuesta Claro!\n2. Hecho especialmente para ti!\n3. Adquiere los productos claro!\n4. Servicio al cliente\n5. Reclamaciones\n6. Sugerencias\n7. Salir\n")
 
 def opc():
     try:
@@ -31,7 +31,7 @@ def admin_usuarios():
     print("¿Que quieres hacer?\n1. Registrar nuevo cliente\n2. Actualizar cliente\n3. Eliminar cliente\n4. Listar clientes\n5. Categoria de Clientes Claro\n6. Servicios activos Clientes Claro\n7. Historial interacciones de Clientes Claro\n8. Salir")
 
 def productos_servicios():
-    print("¿Que quieres hacer?\n1. Servicios\n2. Productos\n3.Salir")
+    print("¿Que quieres hacer?\n1. Servicios\n2. Productos\n3. Salir")
 
 def reportes(): 
     print("¿Que quieres hacer?\n1. Productos y servicios populares de claro\n2. Informe de productos y servicios Claro\n3. Informe producto comprado clientes y cantidad\n4. Salir")
@@ -44,3 +44,4 @@ def admin_servicios():
 
 def admin_productos():
     print("¿Que quieres hacer?\n1. Registrar nuevo producto\n2. Actualizar producto\n3. Eliminar producto\n4. Mostrar productos\n5. Salir")
+

@@ -21,6 +21,8 @@ def registrar_clientes(datos):
     cliente["telefono"]= telefono
     cliente["ciudad"]= input("Ingresa la ciudad donde vive: ")
     cliente["direccion"]= input("Ingresa la direccion del cliente: ")
+    cliente["compras"]= 0
+    cliente["adquiridos"]= []
 
     datos["clientes"].append(cliente)
     print ("Cliente cargado!, cierra el programa para ver los cambios")
@@ -75,8 +77,6 @@ def eliminar_usuario(datos):
             datos["clientes"].pop(i)
             print("Usuario eliminado!")
             return datos
-        else:
-             print("Usuario no hallado")
     return datos
 
 def listar_usuarios(datos):
@@ -85,7 +85,7 @@ def listar_usuarios(datos):
     print("-------------------------------------------------------------------------")
     print("Lista de clientes\n")
     for i in range(len(datos["clientes"])):
-        print(str(indice)+"."+datos["clientes"][i]["nombre"]+ "-"+ datos["clientes"][i]["codigo"])
+        print(str(indice)+"."+" Nombre: " + datos["clientes"][i]["nombre"]+ " - "+ "Codigo: "+datos["clientes"][i]["codigo"])
         print("")
         indice+=1
 
@@ -150,8 +150,6 @@ def eliminar_servicio(datos):
             datos["servicios"].pop(i)
             print("Servicio eliminado!")
             return datos
-        else:
-             print("Servicio no hallado")
     return datos
 
 def listar_servicios(datos):
@@ -160,7 +158,7 @@ def listar_servicios(datos):
     print("-------------------------------------------------------------------------")
     print("Lista de servicios\n")
     for i in range(len(datos["servicios"])):
-        print(str(indice)+"."+datos["servicios"][i]["nombre_serv"]+ "-"+ datos["servicios"][i]["codigo"])
+        print(str(indice)+"."+" Nombre: " + datos["servicios"][i]["nombre_serv"]+ " - "+ "Codigo: "+datos["servicios"][i]["codigo"])
         print("")
         indice+=1
 
@@ -170,14 +168,6 @@ def registrar_productos(datos):
     producto ={}
     print("-------------------------------------------------------------------------")
     producto["nombre"]= input("Ingresa el nombre del producto: ")
-
-
-    codigo= input("Ingresa el codigo del producto: ")
-    for i in range(len(datos["productos"])):
-        while codigo ==datos["productos"][i]["codigo"]:
-            print("codigo repetido")
-            codigo= input("Ingresa el codigo del producto: ")
-
     producto["codigo"]= codigo_unico()
     print("El codigo unico del producto es "+producto["codigo"])
     producto["categoria"]= input("Ingresa la categoria del producto: ")
@@ -188,7 +178,7 @@ def registrar_productos(datos):
 
 
     datos["productos"].append(producto)
-    print ("Servicio listo!, cierra el programa para ver los cambios")
+    print ("Producto listo!, cierra el programa para ver los cambios")
     return datos
 
 def actualizar_productos(datos):
@@ -203,31 +193,31 @@ def actualizar_productos(datos):
                 while opcion not in [1,2,3,4,5,6,7,8]:
                     print("Ingresa una opcion valida\n")
                     opcion =opc()
-                    if opcion==1:
-                        datos["productos"][i]["nombre"]= input("Ingrese el nuevo nombre del producto: ")
+                if opcion==1:
+                    datos["productos"][i]["nombre"]= input("Ingrese el nuevo nombre del producto: ")
+                    print("guardado!")
+                elif opcion==2:
+                    codigo_nuevo= datos["productos"][i]["codigo"]= codigo_unico()
+                    print("guardado!")
+                    print("El codigo nuevo del servicio es "+codigo_nuevo)
+                elif opcion==3:
+                        datos["productos"][i]["marca"]= input("Ingrese la nueva marca del producto: ")
                         print("guardado!")
-                    elif opcion==2:
-                        codigo_nuevo= datos["servicios"][i]["codigo"]= codigo_unico()
-                        print("guardado!")
-                        print("El codigo nuevo del servicio es "+codigo_nuevo)
-                    elif opcion==3:
-                            datos["productos"][i]["marca"]= input("Ingrese la nueva marca del producto: ")
-                            print("guardado!")
-                    elif opcion==4:
-                        datos["productos"][i]["categoria"]= input("Ingrese la nueva categoria del producto: ")
-                        print("guardado!")
-                    elif opcion==5:
-                        datos["productos"][i]["caracteristicas"]= input("Ingrese las caracteristicas actualizadas del producto: ")
-                        print("guardado!")
-                    elif opcion==6:
-                        datos["productos"][i]["garantia"]= input("Ingrese la nueva garantia del producto: ")
-                        print("guardado!")
-                    elif opcion==7:
-                        datos["productos"][i]["precio"]= input("Ingrese el precio actualizado del producto: ")
-                        print("guardado!")
-                    else:
-                        print("Saliste de actualizar productos!")
-                        break
+                elif opcion==4:
+                    datos["productos"][i]["categoria"]= input("Ingrese la nueva categoria del producto: ")
+                    print("guardado!")
+                elif opcion==5:
+                    datos["productos"][i]["caracteristicas"]= input("Ingrese las caracteristicas actualizadas del producto: ")
+                    print("guardado!")
+                elif opcion==6:
+                    datos["productos"][i]["garantia"]= input("Ingrese la nueva garantia del producto: ")
+                    print("guardado!")
+                elif opcion==7:
+                    datos["productos"][i]["precio"]= input("Ingrese el precio actualizado del producto: ")
+                    print("guardado!")
+                else:
+                    print("Saliste de actualizar productos!")
+                    break
         return datos
     
 def eliminar_producto(datos):
@@ -239,8 +229,6 @@ def eliminar_producto(datos):
             datos["productos"].pop(i)
             print("Producto eliminado!")
             return datos
-        else:
-             print("Producto no hallado")
     return datos
 
 def listar_productos(datos):
@@ -249,6 +237,51 @@ def listar_productos(datos):
     print("-------------------------------------------------------------------------")
     print("Lista de productos\n")
     for i in range(len(datos["productos"])):
-        print(str(indice)+"."+datos["productos"][i]["nombre"]+ "-"+ datos["productos"][i]["codigo"])
+        print(str(indice)+"."+" Nombre: " + datos["productos"][i]["nombre"]+ " - "+ "Codigo: "+datos["productos"][i]["codigo"])
         print("")
         indice+=1
+
+#usuarios
+def registrar_compra(datos):
+    datos= dict(datos)
+    codigo= input("Ingresa tu codigo personal de cliente Claro: ")
+    for i in range(len(datos["clientes"])):
+        if codigo == datos["clientes"][i]["codigo"]:
+            print("¿Que deseas adquirir?:\n1.Servicios\n2.Productos\n3.Salir")
+            opcion=opc()
+            while not opcion in [1,2,3]:
+                opcion =opc()
+                print("Escoge una opcion valida\n")
+            if opcion==1:
+                #marca excepcion
+                cantidad_compra= int(input("Ingresa la cantidad del servicio que vas a adquirir: "))
+                if cantidad_compra==0:
+                    break
+                codigo_servicio= input("Ingresa el codigo del servicio que vas a adquirir: ")
+                for servicio in datos["servicios"]:
+                    if codigo_servicio== servicio["codigo"]:
+                        compras_anteriores= datos["clientes"][i]["compras"]
+                        compras_totales= cantidad_compra + compras_anteriores
+                        servicio_comprado= servicio["nombre_serv"]
+
+                        datos["clientes"][i]["compras"]= compras_totales
+                        datos["clientes"][i]["adquiridos"].append(servicio_comprado)
+                        print("Gracias!, tu compra fue realizada")
+            elif opcion==2:
+                #marca excepcion
+                cantidad_compra= int(input("Ingresa la cantidad del producto que vas a adquirir: "))
+                if cantidad_compra==0:
+                    break
+                codigo_producto= input("Ingresa el codigo del producto que vas a adquirir: ")
+                for producto in datos["productos"]:
+                    if codigo_producto== producto["codigo"]:
+                        compras_anteriores= datos["clientes"][i]["compras"]
+                        compras_totales= cantidad_compra + compras_anteriores
+                        producto_comprado= producto["nombre"]
+
+                        datos["clientes"][i]["compras"]= compras_totales
+                        datos["clientes"][i]["adquiridos"].append(producto_comprado)
+                        print("Gracias!, tu compra fue realizada")
+            else:
+                print("Saliste de Adquiere los productos Claro!")
+    return datos

@@ -16,7 +16,7 @@ while True:
                 print("")
                 menu_cliente()
                 opcion=opc()
-                while opcion not in [1,2,3,4,5,6]:
+                while opcion not in [1,2,3,4,5,6,7]:
                     opcion =opc()
                     print("Ingresa una opcion valida\n")
                 if opcion==1:
@@ -24,10 +24,12 @@ while True:
                 elif opcion== 2:
                     print("opcion2")
                 elif opcion== 3:
-                    print("opcion3")
+                    datos= registrar_compra(datos)
                 elif opcion== 4:
                     print("opcion4")
                 elif opcion== 5:
+                    print("opcion5")
+                elif opcion== 6:
                     print("opcion5")
                 else:
                     print("Decidiste salir del Portal de Usuarios,adios!")
@@ -88,7 +90,7 @@ while True:
                         elif opcion==3: 
                             datos= eliminar_servicio(datos)
                         elif opcion ==4:
-                            listar_servicios()
+                            listar_servicios(datos)
                         else:
                             print("Decidiste salir de Servicios!")
 #productos                        
@@ -106,7 +108,7 @@ while True:
                         elif opcion==3: 
                             datos= eliminar_producto(datos)
                         elif opcion==4:
-                            listar_productos()
+                            listar_productos(datos)
                         else:
                             print("Decidiste salir de Productos!")
                         
