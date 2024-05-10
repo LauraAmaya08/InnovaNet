@@ -1,34 +1,73 @@
 {
     "clientes": [
         {
-            "nombre": "Jaime",
-            "documento": 1234567890,
-            "email": "jaimejaime@gmail.com",
-            "telefono": 3118652669,
-            "telefono_2": 3102040890,
-            "compras": null,
+            "nombre": "laura",
+            "codigo": "23b6853b-3519-4535-9da2-f68cdff597b7",
+            "email": "lauragil@gmail.com",
+            "telefono": "3102040809",
             "ciudad": "Bucaramanga",
-            "direccion": "Calle 10 carrera 5",
-            "interacciones": {
-                "servicio_cliente": null,
-                "reclamaciones": null,
-                "sugerencias": null
-            }
+            "direccion": "calle 33 no. 14-20"
+        },
+        {
+            "nombre": "Juan",
+            "codigo": "amoamiesposa",
+            "email": "juanito@gmail.com",
+            "telefono": "3456754120",
+            "ciudad": "barranquilla",
+            "direccion": "calle 9 cra 36"
+        },
+        {
+            "nombre": "Miguel",
+            "codigo": "ti423",
+            "email": "miguelito200@gmail.com",
+            "telefono": "3390181749",
+            "ciudad": "cauca",
+            "direccion": "occidente 3 cra 12"
+        },
+        {
+            "nombre": "Angelica",
+            "codigo": "ancg67",
+            "email": "angelita@gmail.com",
+            "telefono": "3456718091",
+            "ciudad": "valledupar",
+            "direccion": "avenida diomedes no.5"
+        },
+        {
+            "nombre": "Vanessa",
+            "codigo": "vnsita88",
+            "email": "vanessitalinda@hotmail.com",
+            "telefono": "3457160978",
+            "ciudad": "amazonas",
+            "direccion": "calle 18 cra 5-10"
         }
     ],
     "servicios": [
         {
             "nombre_serv": "fibra optica",
-            "codigo": 12345678,
+            "codigo": "12345678",
             "categoria": "Hogar",
             "descripcion": "Descubre el futuro de la conectividad con Claro Fibra optica! Sumergete en un universo de velocidad, fiabilidad y tecnologia de vanguardia. Conecta todos tus dispositivos a una red ultrarrapida que te llevara a nuevas alturas de streaming sin interrupciones, juegos en linea sin retardos y descargas instantaneas. Di adios a los tiempos de espera y da la bienvenida a la era de la velocidad con Claro Fibra optica!",
-            "precio": 120000
+            "precio": "150000"
+        },
+        {
+            "nombre_serv": "Prepago",
+            "codigo": "pip081",
+            "categoria": "Servicio Movil",
+            "descripcion": "Claro te ofrece un servicio prepago que te brinda total flexibilidad y control sobre tus gastos de comunicacion. Con este servicio, puedes recargar tu saldo segun tus necesidades y utilizarlo para realizar llamadas, enviar mensajes de texto y navegar por Internet. No necesitas comprometerte con contratos a largo plazo ni pasar por verificaciones de credito. Con solo recargar, tienes acceso a todos los servicios de Claro de inmediato.",
+            "precio": "Desde 10000"
+        },
+        {
+            "nombre_serv": "Postpago",
+            "codigo": "omn98",
+            "categoria": "Servicio movil",
+            "descripcion": "Claro te ofrece un servicio prepago simple y flexible. Recargas tu saldo y controlas tus gastos. Sin contratos largos ni verificaciones. Administra todo desde tu celular con nuestra app. Recargas, hablas y navegas a tu manera!",
+            "precio": "Desde 39000"
         }
     ],
     "productos": [
         {
             "nombre": "Xiaomi Redmi Note 13 Pro",
-            "codigo": 123456,
+            "codigo": "123456",
             "marca": "Xiaomi",
             "categoria": "Tecnologia",
             "caracteristicas": [
@@ -36,7 +75,7 @@
                 "RAM: 8 GB",
                 "Sistema operativo: Android 13"
             ],
-            "precio": 999000,
+            "precio": "999000",
             "garantia": "1 a"
         }
     ],
@@ -44,7 +83,7 @@
         {
             "vendido": "prepago",
             "fecha": "17/12/23",
-            "cantidad": 2,
+            "cantidad": "2",
             "estado": "pagado"
         }
     ]

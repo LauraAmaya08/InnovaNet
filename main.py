@@ -1,5 +1,6 @@
 from menus import*
 from manejo_json import*
+from administracion import*
 
 datos= cargar("Innovanet.json")
 #menu principal
@@ -49,13 +50,13 @@ while True:
                         opcion =opc()
                         print("Ingresa una opcion valida\n")
                     if opcion==1:
-                        print("opcion1")
+                        datos = registrar_clientes(datos)
                     elif opcion== 2:
-                        print("opcion2")
+                        datos= actualizar_clientes(datos)
                     elif opcion== 3:
-                        print("opcion3")
+                        datos= eliminar_usuario(datos)
                     elif opcion== 4:
-                        print("opcion4")
+                        listar_usuarios(datos)
                     elif opcion== 5:
                         print("opcion5")
                     elif opcion== 6:
@@ -63,7 +64,7 @@ while True:
                     elif opcion== 7:
                         print("opcion7")
                     else:
-                        print("Decidiste salir Usuarios, adios!")
+                        print("Decidiste salir de Usuarios, adios!")
 #Servicios y productos
                 elif opcion== 2:
                     print("")
@@ -72,10 +73,43 @@ while True:
                     while opcion not in [1,2,3]:
                         opcion =opc()
                         print("Ingresa una opcion valida\n")
+#servicios
                     if opcion==1:
-                        print("opcion1")
+                        print("")
+                        admin_servicios()
+                        opcion= opc()
+                        while opcion not in [1,2,3,4,5]:
+                            opcion =opc()
+                            print("Ingresa una opcion valida\n")
+                        if opcion==1:
+                            datos= registrar_servicios(datos)
+                        elif opcion== 2:
+                            datos= actualizar_servicios(datos)
+                        elif opcion==3: 
+                            datos= eliminar_servicio(datos)
+                        elif opcion ==4:
+                            listar_servicios()
+                        else:
+                            print("Decidiste salir de Servicios!")
+#productos                        
                     elif opcion== 2:
-                        print("opcion2")
+                        print("")
+                        admin_productos()
+                        opcion= opc()
+                        while opcion not in [1,2,3,4,5]:
+                            opcion =opc()
+                            print("Ingresa una opcion valida\n")
+                        if opcion==1:
+                            datos= registrar_productos(datos)
+                        elif opcion== 2:
+                            datos= actualizar_productos(datos)
+                        elif opcion==3: 
+                            datos= eliminar_producto(datos)
+                        elif opcion==4:
+                            listar_productos()
+                        else:
+                            print("Decidiste salir de Productos!")
+                        
                     else:
                         print("Decidiste salir Productos y Servicios, adios!")
 #reportes
