@@ -1,7 +1,7 @@
 {
     "clientes": [
         {
-            "nombre": "laura",
+            "nombre": "Laura",
             "codigo": "23b6853b-3519-4535-9da2-f68cdff597b7",
             "email": "lauragil@gmail.com",
             "telefono": "3102040809",
@@ -11,6 +11,12 @@
             "adquiridos": [
                 "Prepago",
                 "Portatil Lenovo 15ALC6 R5 8GB 128GB +1TB W11 Azul"
+            ],
+            "publicidad": [
+                [
+                    "computadores",
+                    "celulares"
+                ]
             ]
         },
         {
@@ -20,8 +26,12 @@
             "telefono": "3456754120",
             "ciudad": "barranquilla",
             "direccion": "calle 9 cra 36",
-            "compras": 0,
-            "adquiridos": []
+            "compras": 1,
+            "adquiridos": [
+                "Portatil Lenovo 15ALC6 R5 8GB 128GB +1TB W11 Azul"
+            ],
+            "publicidad": []
+
         },
         {
             "nombre": "Miguel",
@@ -41,7 +51,8 @@
             "ciudad": "amazonas",
             "direccion": "calle 18 cra 5-10",
             "compras": 0,
-            "adquiridos": []
+            "adquiridos": [],
+            "publicidad": []
         },
         {
             "nombre": "Jose",
@@ -51,7 +62,8 @@
             "ciudad": "cartagena",
             "direccion": "calle 10 #12-15",
             "compras": 0,
-            "adquiridos": []
+            "adquiridos": [],
+            "publicidad": []
         },
         {
             "nombre": "maria",
@@ -61,42 +73,43 @@
             "ciudad": "santa marta",
             "direccion": "calle 18 #3-5",
             "compras": 0,
-            "adquiridos": []
+            "adquiridos": [],
+            "publicidad": []
         }
     ],
     "servicios": [
         {
             "nombre_serv": "fibra optica",
             "codigo": "35a653ea-1228-4cfc-afac-283b23e0312e",
-            "categoria": "Hogar",
+            "categoria": "hogar",
             "descripcion": "Descubre el futuro de la conectividad con Claro Fibra optica! Sumergete en un universo de velocidad, fiabilidad y tecnologia de vanguardia. Conecta todos tus dispositivos a una red ultrarrapida que te llevara a nuevas alturas de streaming sin interrupciones, juegos en linea sin retardos y descargas instantaneas. Di adios a los tiempos de espera y da la bienvenida a la era de la velocidad con Claro Fibra optica!",
             "precio": "150000"
         },
         {
             "nombre_serv": "Prepago",
             "codigo": "pip081",
-            "categoria": "Servicio Movil",
+            "categoria": "celulares",
             "descripcion": "Claro te ofrece un servicio prepago que te brinda total flexibilidad y control sobre tus gastos de comunicacion. Con este servicio, puedes recargar tu saldo segun tus necesidades y utilizarlo para realizar llamadas, enviar mensajes de texto y navegar por Internet. No necesitas comprometerte con contratos a largo plazo ni pasar por verificaciones de credito. Con solo recargar, tienes acceso a todos los servicios de Claro de inmediato.",
             "precio": "Desde 10000"
         },
         {
             "nombre_serv": "Postpago",
             "codigo": "omn98",
-            "categoria": "Servicio movil",
+            "categoria": "celulares",
             "descripcion": "Claro te ofrece un servicio prepago simple y flexible. Recargas tu saldo y controlas tus gastos. Sin contratos largos ni verificaciones. Administra todo desde tu celular con nuestra app. Recargas, hablas y navegas a tu manera!",
             "precio": "Desde 39000"
         },
         {
             "nombre_serv": "Netflix",
             "codigo": "335b40df-b2e9-42fb-86f4-8a8ad9d30cf4",
-            "categoria": "Streaming",
+            "categoria": "streaming",
             "descripcion": "Claro te brinda acceso a Netflix, una plataforma lider en entretenimiento con una extensa biblioteca de peliculas, series y documentales. Disfruta de contenido exclusivo y populares producciones internacionales desde cualquier dispositivo con conexion a internet.",
             "precio": "45500/mes"
         },
         {
             "nombre_serv": "Telefonia fija",
             "codigo": "f06f4bde-e23d-490b-9453-911250ef3c85",
-            "categoria": "Hogar",
+            "categoria": "hogar",
             "descripcion": "Claro proporciona servicios de telefonia fija confiables y accesibles, ideales para mantener una comunicacion clara y estable en el hogar o la oficina. Con una amplia cobertura y opciones de planes personalizables, Claro te ofrece la tranquilidad de contar con un servicio de telefonia fija de calidad para tus necesidades de comunicacion.",
             "precio": "50000"
         }
@@ -106,7 +119,7 @@
             "nombre": "Xiaomi Redmi Note 13 Pro",
             "codigo": "b7aaf1ea-2cee-4444-b2d6-8440fca7fe01",
             "marca": "Xiaomi",
-            "categoria": "Celulares",
+            "categoria": "celulares",
             "caracteristicas": "Memoria interna: 256 GB, RAM: 8 GB,Sistema operativo: Android 13",
             "precio": "999000",
             "garantia": "1 a"
@@ -114,7 +127,7 @@
         {
             "nombre": "Portatil Lenovo 15ALC6 R5 8GB 128GB +1TB W11 Azul",
             "codigo": "6eeb22bb-327f-4087-b45d-aa99b31b83e1",
-            "categoria": "computadoras",
+            "categoria": "computadores",
             "marca": "lenovo",
             "caracteristicas": "Portatil Lenovo IP 3 15ALC6 AMD Ryzen 5 5500U 156 Pulgadas FHD Memoria 8GB Estado Solido 128GB + 1TB Windows 11 Color Azul",
             "garantia": "9 meses",

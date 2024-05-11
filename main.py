@@ -20,9 +20,9 @@ while True:
                     opcion =opc()
                     print("Ingresa una opcion valida\n")
                 if opcion==1:
-                    print("opcion1")
+                    datos=encuesta_publicidad(datos)
                 elif opcion== 2:
-                    print("opcion2")
+                    datos=publicidad(datos)
                 elif opcion== 3:
                     datos= registrar_compra(datos)
                 elif opcion== 4:
