@@ -26,11 +26,11 @@ while True:
                 elif opcion== 3:
                     datos= registrar_compra(datos)
                 elif opcion== 4:
-                    print("opcion4")
+                    datos= servicio_al_cliente(datos)
                 elif opcion== 5:
-                    print("opcion5")
+                    datos= reclamaciones(datos)
                 elif opcion== 6:
-                    print("opcion5")
+                    datos= sugerencias(datos)
                 else:
                     print("Decidiste salir del Portal de Usuarios,adios!")
                     break
@@ -48,7 +48,7 @@ while True:
                     print("")
                     admin_usuarios()
                     opcion= opc()
-                    while opcion not in [1,2,3,4,5,6,7,8]:
+                    while opcion not in [1,2,3,4,5,6,7]:
                         opcion =opc()
                         print("Ingresa una opcion valida\n")
                     if opcion==1:
@@ -60,11 +60,9 @@ while True:
                     elif opcion== 4:
                         listar_usuarios(datos)
                     elif opcion== 5:
-                        print("opcion5")
+                        categoria_clientes_claro(datos)
                     elif opcion== 6:
-                        print("opcion6")
-                    elif opcion== 7:
-                        print("opcion7")
+                        interacciones_usuarios(datos)
                     else:
                         print("Decidiste salir de Usuarios, adios!")
 #Servicios y productos
@@ -123,11 +121,11 @@ while True:
                         opcion =opc()
                         print("Ingresa una opcion valida\n")
                     if opcion==1:
-                        print("opcion1")
+                        servicios_productos_populares(datos)
                     elif opcion== 2:
-                        print("opcion2")
+                        servicios_productos_catalogo(datos)
                     elif opcion==3: 
-                        print("opcion3")
+                        registro_compras(datos)
                     else:
                         print("Decidiste salir de Reportes, adios!")
 #ventas
@@ -137,9 +135,8 @@ while True:
                     opcion= opc()
                     while opcion not in [1,2,3,4]:
                         opcion =opc()
-                        print("Ingresa una opcion valida\n")
                     if opcion==1:
-                        print("opcion1")
+                        catalogo_venta(datos)
                     elif opcion== 2:
                         print("opcion2")
                     elif opcion==3: 

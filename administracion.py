@@ -4,7 +4,7 @@ import uuid
 def codigo_unico():
     codigo= str(uuid.uuid4())
     return codigo
-#clientes
+#usuarios
 def registrar_clientes(datos):
     datos= dict(datos)
     cliente ={}
@@ -24,6 +24,7 @@ def registrar_clientes(datos):
     cliente["compras"]= 0
     cliente["adquiridos"]= []
     cliente["publicidad"]= []
+    cliente["servicio_al_cliente"]= []
 
     datos["clientes"].append(cliente)
     print ("Cliente cargado!, cierra el programa para ver los cambios")
@@ -89,7 +90,61 @@ def listar_usuarios(datos):
         print(str(indice)+"."+" Nombre: " + datos["clientes"][i]["nombre"]+ " - "+ "Codigo: "+datos["clientes"][i]["codigo"])
         print("")
         indice+=1
+#mehorar
+def categoria_clientes_claro(datos):
+    datos= dict(datos)
+    clientes_nuevos=[]
+    clientes_leales= []
+    clientes_regulares=[]
 
+    for cliente in datos["clientes"]:
+        cliente_completo= cliente['nombre']+ " - " + cliente['codigo'] + " - " +"compras: "+ str(cliente['compras'])
+        if cliente["compras"] >= 0 and cliente["compras"] < 12:
+            clientes_nuevos.append(cliente_completo)
+        elif cliente["compras"] >=  12 and cliente["compras"] < 20:
+            clientes_regulares.append(cliente_completo)
+        else:
+            clientes_leales.append(cliente_completo)
+    
+    print("")    
+    print("Estos son los nuevos clientes Claro!: \n")
+    cont=1
+    contr=1
+    contl=1
+    for i in clientes_nuevos:
+        print(str(cont)+". "+i)
+        cont+=1
+    
+    print("")
+    print("Estos son los clientes regulares de Claro!: \n")
+    for i in clientes_regulares:
+        print(str(contr)+". "+i)
+        contr+=1
+
+    print("")
+    print("Estos son los clientes leales a Claro!: \n")
+    for i in clientes_leales:
+        print(str(contl)+". "+i)
+        contl+=1
+
+def interacciones_usuarios(datos):
+    datos=dict(datos)
+    codigo_cliente= input("Ingresa el codigo del cliente: ")
+    for cliente in datos["clientes"]:
+        if codigo_cliente == cliente["codigo"]:
+            print("")
+            print("Interacciones con servicio al cliente: ")
+            for i in cliente["servicio_al_cliente"]:
+                print(i)
+            print("")
+            print("Interacciones con Reclamaciones:")
+            for i in cliente["reclamaciones"]:
+                print(i)
+            print("")
+            print("Interacciones con Sugerencias:")
+            for i in cliente["sugerencias"]:
+                print(i)
+    return datos
 #servicios
 def registrar_servicios(datos):
     datos= dict(datos)
@@ -103,6 +158,7 @@ def registrar_servicios(datos):
     servicio["categoria"]= input("Ingresa la categoria del servicio: ")
     servicio["descripcion"]= input("Ingresa la descripcion del servicio: ")
     servicio["precio"]= input("El precio del servicio: ")
+    servicio["cantidad_vendida"]=0
 
 
     datos["servicios"].append(servicio)
@@ -176,6 +232,7 @@ def registrar_productos(datos):
     producto["caracteristicas"]= input("Ingresa las caracteristicas del producto: ")
     producto["garantia"]= input("Ingresa la duracion de garantia del producto: ")
     producto["precio"]= input("Ingresa el precio del producto: ")
+    producto["cantidad_vendida"]=0
 
 
     datos["productos"].append(producto)
@@ -219,7 +276,7 @@ def actualizar_productos(datos):
                 else:
                     print("Saliste de actualizar productos!")
                     break
-        return datos
+    return datos
     
 def eliminar_producto(datos):
     datos= dict(datos)
@@ -242,7 +299,7 @@ def listar_productos(datos):
         print("")
         indice+=1
 
-#usuarios
+#clientes
 def registrar_compra(datos):
     datos= dict(datos)
     codigo= input("Ingresa tu codigo personal de cliente Claro: ")
@@ -263,7 +320,7 @@ def registrar_compra(datos):
                     if codigo_servicio== servicio["codigo"]:
                         compras_anteriores= datos["clientes"][i]["compras"]
                         compras_totales= cantidad_compra + compras_anteriores
-                        servicio_comprado= servicio["nombre_serv"]
+                        servicio_comprado= (servicio["nombre_serv"]+ " Cantidad: "+ str(cantidad_compra))
 
                         datos["clientes"][i]["compras"]= compras_totales
                         datos["clientes"][i]["adquiridos"].append(servicio_comprado)
@@ -278,8 +335,11 @@ def registrar_compra(datos):
                     if codigo_producto== producto["codigo"]:
                         compras_anteriores= datos["clientes"][i]["compras"]
                         compras_totales= cantidad_compra + compras_anteriores
-                        producto_comprado= producto["nombre"]
+                        producto_comprado= (producto["nombre"]+ " Cantidad: " + str(cantidad_compra))
+                        producto_vendido= producto["cantidad_vendida"]
+                        total_producto_ahora= producto_vendido+ cantidad_compra
 
+                        producto["cantidad_vendida"]= total_producto_ahora
                         datos["clientes"][i]["compras"]= compras_totales
                         datos["clientes"][i]["adquiridos"].append(producto_comprado)
                         print("Gracias!, tu compra fue realizada")
@@ -433,8 +493,94 @@ def publicidad(datos):
                     print(producto["caracteristicas"])
                     print("$"+producto["precio"])
                     print(" ")
+    return datos
 
 def servicio_al_cliente(datos):
     datos=dict(datos)
-    
+    codigo= input("Ingresa tu codigo personal de cliente Claro: ")
+    print(" ")
+    for i in range (len(datos["clientes"])):
+        if codigo== datos["clientes"][i]["codigo"]:
+            print(f"Hola {datos['clientes'][i]['nombre']}, recuerda que estamos aqui para ayudarte en todo lo que necesites. Si tienes alguna pregunta o requerimiento, no dudes en contactarnos. Estamos disponibles para brindarte el mejor servicio posible.")
+            comentario= input("Por favor ingresa tu comentario o problema, un tecnico te respondera en momentos: ")
+            datos["clientes"][i]["servicio_al_cliente"].append(comentario)
+            print("Analizaremos tu comentario detalladamente, cierra el programa para cargarlo!")
+            print("Gracias por ser parte de la familia Claro Colombia!")
     return datos 
+
+def reclamaciones(datos):
+    datos=dict(datos)
+    codigo= input("Ingresa tu codigo personal de cliente Claro: ")
+    print(" ")
+    for i in range (len(datos["clientes"])):
+        if codigo== datos["clientes"][i]["codigo"]:
+            print(f"Hola {datos['clientes'][i]['nombre']}, entendemos lo importante que es tener un servicio confiable y de calidad, por lo que estamos comprometidos a resolver cualquier problema que hayas experimentado lo antes posible.")
+            problema = input("Por favor, proporciona más detalles sobre tu reclamación, incluyendo cualquier numero de referencia o detalle especifico que pueda ayudarnos a entender mejor la situacion. Nuestro equipo esta aqui para escucharte y trabajar contigo para encontrar una solución satisfactoria: ")
+            datos["clientes"][i]["reclamaciones"].append(problema)
+            print("Cargado! cierra el programa correctamente para actualizarlo en nuestra base de datos\n")
+            print("Agradecemos tu paciencia y colaboración mientras trabajamos en esta situación. Tu opinión es fundamental para nosotros y queremos asegurarnos de brindarte el mejor servicio posible.")
+    return datos 
+
+def sugerencias(datos):
+    datos=dict(datos)
+    codigo= input("Ingresa tu codigo personal de cliente Claro: ")
+    print(" ")
+    for i in range (len(datos["clientes"])):
+        if codigo== datos["clientes"][i]["codigo"]:
+            print(f"Hola {datos['clientes'][i]['nombre']}, queremos agradecerte por tomarte el tiempo para compartir tus sugerencias con nosotros. Cada comentario que recibimos nos permite entender mejor tus necesidades y expectativas, y nos impulsa a buscar nuevas formas de superarlas.")
+            sugerencia = input("Si tienes alguna idea, comentario o sugerencia adicional que te gustaría compartir con nosotros por favor escribela: ")
+            datos["clientes"][i]["sugerencias"].append(sugerencia)
+            print("Cargado! cierra el programa correctamente para actualizarlo en nuestra base de datos\n")
+            print("Gracias nuevamente por tu apoyo continuo y por ser parte de la familia Claro. Esperamos seguir siendo tu proveedor de confianza por muchos años más.")
+    return datos 
+
+#reportes
+def servicios_productos_catalogo(datos):
+    datos= dict(datos)
+    print("La cantidad de servicios ofrecidos son: "+ str(len(datos["servicios"])))
+    print("")
+    for servicio in datos["servicios"]:
+        print (f"""Servicio: {servicio["nombre_serv"]}\nCodigo: {servicio["codigo"]}\nCategoria: {servicio["categoria"]}\nDescripcion: {servicio["descripcion"]}\nPrecio: {servicio["precio"]}\n""")
+
+    print("La cantidad de productos ofrecidos son: "+ str(len(datos["productos"])))
+    print("")
+    for producto in datos["productos"]:
+        print (f"""Producto: {producto["nombre"]}\nCodigo: {producto["codigo"]}\nMarca: {producto["marca"]}\nCategoria: {producto["categoria"]}\Caracteristicas: {producto["caracteristicas"]}\nPrecio: {producto["precio"]}\nGarantia: {producto["garantia"]}""")
+
+    print("La totalidad de productos y servicios de Claro es de: " + str((len(datos['servicios']))+(len(datos['productos']))))
+
+def registro_compras(datos):
+    datos= dict (datos)
+    for cliente in datos["clientes"]:
+        if cliente["adquiridos"] != []:
+            print("Cliente :" + cliente["nombre"])
+            print("Codigo: " + cliente["codigo"])
+            print("Compro: " + ", ".join((cliente['adquiridos'])))
+            print("")
+    return datos
+
+def servicios_productos_populares(datos):
+    venta= {}
+    for servicio in datos["servicios"]:
+        cantidad_vendida= servicio["cantidad_vendida"]
+        servicio_nombre= servicio["nombre_serv"]
+        venta[servicio_nombre]= cantidad_vendida
+    maxima_venta= max(venta.values())
+    categoria_maxima= [categoria for categoria,cantidad in venta.items() if cantidad==maxima_venta]
+
+    print(f"Los servicios mas populares en Claro Colombia por el momento son {','.join(categoria_maxima)} con ventas de {maxima_venta}")
+    venta_productos={}
+    for producto in datos["productos"]:
+        cantidad_vendida_productos= producto["cantidad_vendida"]
+        producto_nombre= producto["nombre"]
+        venta_productos[producto_nombre]= cantidad_vendida_productos
+    maxima_venta= max(venta_productos.values())
+    categoria_maxima= [categoria for categoria,cantidad in venta_productos.items() if cantidad==maxima_venta]
+    print(f"Los productos mas vendidos en Claro Colombia por el momento son {','.join(categoria_maxima)} con ventas de {maxima_venta}")
+
+#ventas
+def catalogo_venta(datos):
+    datos= dict(datos)
+    
+    for categoria in datos["productos"]["categoria"]:
+        print(categoria)

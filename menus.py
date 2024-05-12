@@ -28,7 +28,7 @@ def menu_admin():
     print("A continuacion ingresa la opcion con la que vas a trabajar:\n1. Usuarios\n2. Productos y Servicios\n3. Reportes\n4. Ventas\n5. Salir")
 
 def admin_usuarios():
-    print("¿Que quieres hacer?\n1. Registrar nuevo cliente\n2. Actualizar cliente\n3. Eliminar cliente\n4. Listar clientes\n5. Categoria de Clientes Claro\n6. Servicios activos Clientes Claro\n7. Historial interacciones de Clientes Claro\n8. Salir")
+    print("¿Que quieres hacer?\n1. Registrar nuevo cliente\n2. Actualizar cliente\n3. Eliminar cliente\n4. Listar clientes\n5. Categoria de Clientes Claro\n6. Historial interacciones de Clientes Claro\n7. Salir")
 
 def productos_servicios():
     print("¿Que quieres hacer?\n1. Servicios\n2. Productos\n3. Salir")

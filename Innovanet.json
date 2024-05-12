@@ -17,7 +17,13 @@
                     "computadores",
                     "celulares"
                 ]
-            ]
+            ],
+            "servicio_al_cliente": [
+                "Como soluciono un decodificador da\u00f1ado",
+                "Necesito otro celular nuevo por la garantia"
+            ],
+            "reclamaciones": [],
+            "sugerencias": []
         },
         {
             "nombre": "Juan",
@@ -30,8 +36,14 @@
             "adquiridos": [
                 "Portatil Lenovo 15ALC6 R5 8GB 128GB +1TB W11 Azul"
             ],
-            "publicidad": []
-
+            "publicidad": [
+                [
+                    "hogar"
+                ]
+            ],
+            "servicio_al_cliente": [],
+            "reclamaciones": [],
+            "sugerencias": []
         },
         {
             "nombre": "Miguel",
@@ -40,8 +52,11 @@
             "telefono": "3390181749",
             "ciudad": "cauca",
             "direccion": "occidente 3 cra 12",
-            "compras": 0,
-            "adquiridos": []
+            "compras": 20,
+            "adquiridos": [],
+            "servicio_al_cliente": [],
+            "reclamaciones": [],
+            "sugerencias": []
         },
         {
             "nombre": "Vanessa",
@@ -50,9 +65,12 @@
             "telefono": "3457160978",
             "ciudad": "amazonas",
             "direccion": "calle 18 cra 5-10",
-            "compras": 0,
+            "compras": 16,
             "adquiridos": [],
-            "publicidad": []
+            "publicidad": [],
+            "servicio_al_cliente": [],
+            "reclamaciones": [],
+            "sugerencias": []
         },
         {
             "nombre": "Jose",
@@ -61,9 +79,14 @@
             "telefono": "3458829010",
             "ciudad": "cartagena",
             "direccion": "calle 10 #12-15",
-            "compras": 0,
-            "adquiridos": [],
-            "publicidad": []
+            "compras": 6,
+            "adquiridos": [
+                "Telefonia fija Cantidad: 2"
+            ],
+            "publicidad": [],
+            "servicio_al_cliente": [],
+            "reclamaciones": [],
+            "sugerencias": []
         },
         {
             "nombre": "maria",
@@ -72,46 +95,54 @@
             "telefono": "3102060890",
             "ciudad": "santa marta",
             "direccion": "calle 18 #3-5",
-            "compras": 0,
+            "compras": 3,
             "adquiridos": [],
-            "publicidad": []
+            "publicidad": [],
+            "servicio_al_cliente": [],
+            "reclamaciones": [],
+            "sugerencias": []
         }
     ],
     "servicios": [
         {
-            "nombre_serv": "fibra optica",
+            "nombre_serv": "Fibra optica",
             "codigo": "35a653ea-1228-4cfc-afac-283b23e0312e",
             "categoria": "hogar",
             "descripcion": "Descubre el futuro de la conectividad con Claro Fibra optica! Sumergete en un universo de velocidad, fiabilidad y tecnologia de vanguardia. Conecta todos tus dispositivos a una red ultrarrapida que te llevara a nuevas alturas de streaming sin interrupciones, juegos en linea sin retardos y descargas instantaneas. Di adios a los tiempos de espera y da la bienvenida a la era de la velocidad con Claro Fibra optica!",
-            "precio": "150000"
+            "precio": "150000",
+            "cantidad_vendida": 0
         },
         {
             "nombre_serv": "Prepago",
             "codigo": "pip081",
             "categoria": "celulares",
             "descripcion": "Claro te ofrece un servicio prepago que te brinda total flexibilidad y control sobre tus gastos de comunicacion. Con este servicio, puedes recargar tu saldo segun tus necesidades y utilizarlo para realizar llamadas, enviar mensajes de texto y navegar por Internet. No necesitas comprometerte con contratos a largo plazo ni pasar por verificaciones de credito. Con solo recargar, tienes acceso a todos los servicios de Claro de inmediato.",
-            "precio": "Desde 10000"
+            "precio": "Desde 10000",
+            "cantidad_vendida": 0
         },
         {
             "nombre_serv": "Postpago",
             "codigo": "omn98",
             "categoria": "celulares",
             "descripcion": "Claro te ofrece un servicio prepago simple y flexible. Recargas tu saldo y controlas tus gastos. Sin contratos largos ni verificaciones. Administra todo desde tu celular con nuestra app. Recargas, hablas y navegas a tu manera!",
-            "precio": "Desde 39000"
+            "precio": "Desde 39000",
+            "cantidad_vendida": 0
         },
         {
             "nombre_serv": "Netflix",
             "codigo": "335b40df-b2e9-42fb-86f4-8a8ad9d30cf4",
             "categoria": "streaming",
             "descripcion": "Claro te brinda acceso a Netflix, una plataforma lider en entretenimiento con una extensa biblioteca de peliculas, series y documentales. Disfruta de contenido exclusivo y populares producciones internacionales desde cualquier dispositivo con conexion a internet.",
-            "precio": "45500/mes"
+            "precio": "45500/mes",
+            "cantidad_vendida": 30
         },
         {
             "nombre_serv": "Telefonia fija",
             "codigo": "f06f4bde-e23d-490b-9453-911250ef3c85",
             "categoria": "hogar",
             "descripcion": "Claro proporciona servicios de telefonia fija confiables y accesibles, ideales para mantener una comunicacion clara y estable en el hogar o la oficina. Con una amplia cobertura y opciones de planes personalizables, Claro te ofrece la tranquilidad de contar con un servicio de telefonia fija de calidad para tus necesidades de comunicacion.",
-            "precio": "50000"
+            "precio": "50000",
+            "cantidad_vendida": 30
         }
     ],
     "productos": [
@@ -122,7 +153,8 @@
             "categoria": "celulares",
             "caracteristicas": "Memoria interna: 256 GB, RAM: 8 GB,Sistema operativo: Android 13",
             "precio": "999000",
-            "garantia": "1 a"
+            "garantia": "1 a",
+            "cantidad_vendida": 3
         },
         {
             "nombre": "Portatil Lenovo 15ALC6 R5 8GB 128GB +1TB W11 Azul",
@@ -131,7 +163,8 @@
             "marca": "lenovo",
             "caracteristicas": "Portatil Lenovo IP 3 15ALC6 AMD Ryzen 5 5500U 156 Pulgadas FHD Memoria 8GB Estado Solido 128GB + 1TB Windows 11 Color Azul",
             "garantia": "9 meses",
-            "precio": "1900999"
+            "precio": "1900999",
+            "cantidad_vendida": 0
         }
     ],
     "ventas": [
