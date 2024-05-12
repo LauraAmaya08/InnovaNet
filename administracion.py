@@ -148,6 +148,7 @@ def interacciones_usuarios(datos):
 #servicios
 def registrar_servicios(datos):
     datos= dict(datos)
+    categorias= ["hogar", "celulares", "servicios moviles", "computadores", "streaming","accesorios tecnologicos", "seguridad digital" ]
     servicio ={}
     print("-------------------------------------------------------------------------")
     servicio["nombre_serv"]= input("Ingresa el nombre del servicio: ")
@@ -155,7 +156,11 @@ def registrar_servicios(datos):
 
     servicio["codigo"]= codigo_unico()
     print("El codigo unico del servicio es "+ servicio["codigo"])
-    servicio["categoria"]= input("Ingresa la categoria del servicio: ")
+    categoria= input(f"Ingresa la categoria del servicio, recuerda que las categorias disponibles son {','.join(categorias)}:  ").lower()
+    while categoria not in categorias:
+        print("No esta en las categorias disponibles!")
+        categoria= input("Ingresa la categoria del producto: ").lower()
+    servicio["categoria"]= categoria
     servicio["descripcion"]= input("Ingresa la descripcion del servicio: ")
     servicio["precio"]= input("El precio del servicio: ")
     servicio["cantidad_vendida"]=0
@@ -222,12 +227,17 @@ def listar_servicios(datos):
 #productos 
 def registrar_productos(datos):
     datos= dict(datos)
+    categorias= ["hogar", "celulares", "servicios moviles", "computadores", "streaming","accesorios tecnologicos", "seguridad digital" ]
     producto ={}
     print("-------------------------------------------------------------------------")
     producto["nombre"]= input("Ingresa el nombre del producto: ")
     producto["codigo"]= codigo_unico()
     print("El codigo unico del producto es "+producto["codigo"])
-    producto["categoria"]= input("Ingresa la categoria del producto: ")
+    categoria= input(f"Ingresa la categoria del producto, recuerda que las categorias disponibles son {','.join(categorias)}:  ").lower()
+    while categoria not in categorias:
+        print("No esta en las categorias disponibles!")
+        categoria= input("Ingresa la categoria del producto: ").lower()
+    producto["categoria"]= categoria 
     producto["marca"]= input("Ingresa la marca del producto: ")
     producto["caracteristicas"]= input("Ingresa las caracteristicas del producto: ")
     producto["garantia"]= input("Ingresa la duracion de garantia del producto: ")
@@ -581,6 +591,74 @@ def servicios_productos_populares(datos):
 #ventas
 def catalogo_venta(datos):
     datos= dict(datos)
+    print("¿A que quieres acceder?\n1. Servicios\n2. Productos\n3. Salir")
+    opcion= opc()
+    while opcion not in [1,2,3]:
+        opcion =opc()
+        print("Ingresa una opcion valida\n")
+    if opcion==1:
+        print("Excelente! aqui estan los servicios")
+        print("En Claro, entendemos que eres un/a profesional dedicado/a a ofrecer soluciones de alta calidad a tus clientes. Por eso, estamos emocionados de presentarte nuestra amplia gama de productos y servicios diseñados para satisfacer las necesidades de tus clientes y ayudarte a alcanzar tus objetivos de ventas.\n ¿Que categoria quieres revisar?\n1. Hogar\n2. Celulares\n3. Servicios Moviles\n4. Computadores\n5. Streaming\n6. Accesorios Tecnologicos\n7. Seguridad Digital\n8.Salir\n")
+        opcion= opc()
+        while opcion not in [1,2,3,4,5,6,7,8]:
+            opcion =opc()
+            print("Ingresa una opcion valida\n")
+        for servicio in datos["servicios"]:
+            if opcion==1:
+                if servicio["categoria"]== "hogar":
+                    print (f"""Servicio: {servicio["nombre_serv"]}\nCodigo: {servicio["codigo"]}\nDescripcion: {servicio["descripcion"]}\nPrecio: {servicio["precio"]}\n""")
+            elif opcion==2:
+                if servicio["categoria"]== "celulares":
+                    print (f"""Servicio: {servicio["nombre_serv"]}\nCodigo: {servicio["codigo"]}\nDescripcion: {servicio["descripcion"]}\nPrecio: {servicio["precio"]}\n""")
+            elif opcion==3:
+                if servicio["categoria"]== "servicios moviles":
+                    print (f"""Servicio: {servicio["nombre_serv"]}\nCodigo: {servicio["codigo"]}\nDescripcion: {servicio["descripcion"]}\nPrecio: {servicio["precio"]}\n""") 
+            elif opcion==4:
+                if servicio["categoria"]== "computadores":
+                    print (f"""Servicio: {servicio["nombre_serv"]}\nCodigo: {servicio["codigo"]}\nDescripcion: {servicio["descripcion"]}\nPrecio: {servicio["precio"]}\n""")
+            elif opcion==5:
+                if servicio["categoria"]== "streaming":
+                    print (f"""Servicio: {servicio["nombre_serv"]}\nCodigo: {servicio["codigo"]}\nDescripcion: {servicio["descripcion"]}\nPrecio: {servicio["precio"]}\n""")
+            elif opcion==6:
+                if servicio["categoria"]== "accesorios tecnologicos":
+                    print (f"""Servicio: {servicio["nombre_serv"]}\nCodigo: {servicio["codigo"]}\nDescripcion: {servicio["descripcion"]}\nPrecio: {servicio["precio"]}\n""") 
+            elif opcion==7:
+                if servicio["categoria"]== "seguridad digital":
+                    print (f"""Servicio: {servicio["nombre_serv"]}\nCodigo: {servicio["codigo"]}\nDescripcion: {servicio["descripcion"]}\nPrecio: {servicio["precio"]}\n""")
+            else:
+                print("Decidiste salir del catalogo de servicios Claro!")
+    elif opcion==2: 
+        print("Excelente! aqui estan los productos")
+        print("En Claro, entendemos que eres un/a profesional dedicado/a a ofrecer soluciones de alta calidad a tus clientes. Por eso, estamos emocionados de presentarte nuestra amplia gama de productos y servicios diseñados para satisfacer las necesidades de tus clientes y ayudarte a alcanzar tus objetivos de ventas.\n ¿Que categoria quieres revisar?\n1. Hogar\n2. Celulares\n3. Servicios Moviles\n4. Computadores\n5. Streaming\n6. Accesorios Tecnologicos\n7. Seguridad Digital\n8.Salir\n")
+        opcion= opc()
+        while opcion not in [1,2,3,4,5,6,7,8]:
+            opcion =opc()
+            print("Ingresa una opcion valida\n")
+        for producto in datos["productos"]:
+            if opcion==1:
+                if producto["categoria"]== "hogar":
+                    print (f"""Producto: {producto["nombre"]}\nCodigo: {producto["codigo"]}\nMarca: {producto["marca"]}\n\Caracteristicas: {producto["caracteristicas"]}\nPrecio: {producto["precio"]}\nGarantia: {producto["garantia"]}""")
+
+            elif opcion==2:
+                if producto["categoria"]== "celulares":
+                    print (f"""Producto: {producto["nombre"]}\nCodigo: {producto["codigo"]}\nMarca: {producto["marca"]}\n\Caracteristicas: {producto["caracteristicas"]}\nPrecio: {producto["precio"]}\nGarantia: {producto["garantia"]}""")
+            elif opcion==3:
+                if producto["categoria"]== "servicios moviles":
+                    print (f"""Producto: {producto["nombre"]}\nCodigo: {producto["codigo"]}\nMarca: {producto["marca"]}\n\Caracteristicas: {producto["caracteristicas"]}\nPrecio: {producto["precio"]}\nGarantia: {producto["garantia"]}""")
+            elif opcion==4:
+                if producto["categoria"]== "computadores":
+                    print (f"""Producto: {producto["nombre"]}\nCodigo: {producto["codigo"]}\nMarca: {producto["marca"]}\n\Caracteristicas: {producto["caracteristicas"]}\nPrecio: {producto["precio"]}\nGarantia: {producto["garantia"]}""")
+            elif opcion==5:
+                if producto["categoria"]== "streaming":
+                    print (f"""Producto: {producto["nombre"]}\nCodigo: {producto["codigo"]}\nMarca: {producto["marca"]}\n\Caracteristicas: {producto["caracteristicas"]}\nPrecio: {producto["precio"]}\nGarantia: {producto["garantia"]}""")
+            elif opcion==6:
+                if producto["categoria"]== "accesorios tecnologicos":
+                    print (f"""Producto: {producto["nombre"]}\nCodigo: {producto["codigo"]}\nMarca: {producto["marca"]}\n\Caracteristicas: {producto["caracteristicas"]}\nPrecio: {producto["precio"]}\nGarantia: {producto["garantia"]}""")
+            elif opcion==7:
+                if producto["categoria"]== "seguridad digital":
+                    print (f"""Producto: {producto["nombre"]}\nCodigo: {producto["codigo"]}\nMarca: {producto["marca"]}\n\Caracteristicas: {producto["caracteristicas"]}\nPrecio: {producto["precio"]}\nGarantia: {producto["garantia"]}""")
+            else:
+                print("Decidiste salir del catalogo de productos Claro!")
+    else:
+        print("Decidiste salir del catalogo de ventas de Claro!")
     
-    for categoria in datos["productos"]["categoria"]:
-        print(categoria)

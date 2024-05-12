@@ -165,6 +165,16 @@
             "garantia": "9 meses",
             "precio": "1900999",
             "cantidad_vendida": 0
+        },
+        {
+            "nombre": "Power Bank ZERMATT NW5125 BLANCO",
+            "codigo": "c46c31c8-03bc-42ab-ac44-4c8a29e3bdf8",
+            "categoria": "accesorios tecnologicos",
+            "marca": "Electro Online",
+            "caracteristicas": "Bater\u00eda para dispositivo m\u00f3vil con display indicador de carga. Capacidad: 5000 mAh. Tama\u00f1o: 63 X 90 X 13 mm. Interfaz de entrada: Micro USB Tipo de bater\u00eda: Bater\u00eda de pol\u00edmero de litio Entrada: DC5.0V / 2.0A Salidas de Carga: 2 puertos USB Salidas: DC5.0V / 2.1A Certificaci\u00f3n de Calidad: FCC, CE, RoHS",
+            "garantia": "6 meses",
+            "precio": "40900",
+            "cantidad_vendida": 0
         }
     ],
     "ventas": [
