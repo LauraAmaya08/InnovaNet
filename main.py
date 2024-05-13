@@ -138,9 +138,9 @@ while True:
                     if opcion==1:
                         catalogo_venta(datos)
                     elif opcion== 2:
-                        print("opcion2")
+                        datos= registrar_venta(datos)
                     elif opcion==3: 
-                        print("opcion3")
+                        listar_ventas(datos)
                     else:
                         print("Decidiste salir de Ventas, adios!")
                 else:
