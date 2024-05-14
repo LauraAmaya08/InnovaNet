@@ -60,12 +60,17 @@ def manejar_categorias(datos):
         opcion =opc()
         print("Ingresa una opcion valida\n")
     if opcion==1:
-        categoria= input("Ingresa el nombre de la categoria: ")
-        datos["categorias"].append(categoria)
+        categoria= input("Ingresa el nombre de la categoria: ").lower()
+        if not categoria in datos["categorias"]:
+            datos["categorias"].append(categoria)
+            print("Categoria guardada!")
+        else:
+            print("Categoria ya existente!")
     elif opcion==2:
         categoria= input("Ingresa el nombre de la categoria a eliminar: ")
         if categoria in datos["categorias"]:
             datos["categorias"].remove(categoria)
+            print("Categoria eliminada!")
         else:
             print("La categoria no existe")
     else:

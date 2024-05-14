@@ -165,7 +165,7 @@ def interacciones_usuarios(datos):
         if codigo_cliente == cliente["codigo"]:
             encontrado= True
             print("Bienvenido al historial de interacciones de Clientes Claro!, ¿Que quieres ver?:\n1. Interacciones con Servicio al Cliente\n2. Interacciones con Reclamaciones\n3. Interacciones con Sugerencias\n4. Salir")
-            print(f"Accediste al Historial de {cliente['nombre'].tittle()}")
+            print(f"Accediste al Historial de {cliente['nombre']}")
             print("")
             opcion= opc()
             while not opcion in [1,2,3,4]:
