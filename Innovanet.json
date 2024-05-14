@@ -101,6 +101,18 @@
             "servicio_al_cliente": [],
             "reclamaciones": [],
             "sugerencias": []
+        },
+        {
+            "nombre": "Laura",
+            "codigo": "42b6086b-0a33-4d77-a4de-34c352745603",
+            "email": "lauritaBv@gmail.com",
+            "telefono": 3168278492,
+            "ciudad": "Bucarayork",
+            "direccion": "Calle 12 #97-100A",
+            "compras": 0,
+            "adquiridos": [],
+            "publicidad": [],
+            "servicio_al_cliente": []
         }
     ],
     "servicios": [
@@ -109,8 +121,8 @@
             "codigo": "35a653ea-1228-4cfc-afac-283b23e0312e",
             "categoria": "hogar",
             "descripcion": "Descubre el futuro de la conectividad con Claro Fibra optica! Sumergete en un universo de velocidad, fiabilidad y tecnologia de vanguardia. Conecta todos tus dispositivos a una red ultrarrapida que te llevara a nuevas alturas de streaming sin interrupciones, juegos en linea sin retardos y descargas instantaneas. Di adios a los tiempos de espera y da la bienvenida a la era de la velocidad con Claro Fibra optica!",
-            "precio": "150000",
-            "cantidad_vendida": 0
+            "precio": "20000",
+            "cantidad_vendida": 4
         },
         {
             "nombre_serv": "Prepago",
@@ -118,7 +130,7 @@
             "categoria": "celulares",
             "descripcion": "Claro te ofrece un servicio prepago que te brinda total flexibilidad y control sobre tus gastos de comunicacion. Con este servicio, puedes recargar tu saldo segun tus necesidades y utilizarlo para realizar llamadas, enviar mensajes de texto y navegar por Internet. No necesitas comprometerte con contratos a largo plazo ni pasar por verificaciones de credito. Con solo recargar, tienes acceso a todos los servicios de Claro de inmediato.",
             "precio": "Desde 10000",
-            "cantidad_vendida": 0
+            "cantidad_vendida": 4
         },
         {
             "nombre_serv": "Postpago",
@@ -164,7 +176,7 @@
             "caracteristicas": "Portatil Lenovo IP 3 15ALC6 AMD Ryzen 5 5500U 156 Pulgadas FHD Memoria 8GB Estado Solido 128GB + 1TB Windows 11 Color Azul",
             "garantia": "9 meses",
             "precio": "1900999",
-            "cantidad_vendida": 0
+            "cantidad_vendida": 8
         },
         {
             "nombre": "Power Bank ZERMATT NW5125 BLANCO",
@@ -179,10 +191,48 @@
     ],
     "ventas": [
         {
-            "vendido": "prepago",
-            "fecha": "17/12/23",
+            "codigo": "6eeb22bb-327f-4087-b45d-aa99b31b83e1",
+            "nombre": "Portatil Lenovo 15ALC6 R5 8GB 128GB +1TB W11 Azul",
+            "fecha": "2024-05-13 20:44:27.558037",
             "cantidad": "2",
+            "estado": "deuda"
+        },
+        {
+            "codigo": "c46c31c8-03bc-42ab-ac44-4c8a29e3bdf8",
+            "nombre": "Power Bank ZERMATT NW5125 BLANCO",
+            "fecha": "2024-05-13 20:47:30.378285",
+            "cantidad": "4",
+            "estado": "pagado"
+        },
+        {
+            "codigo": "35a653ea-1228-4cfc-afac-283b23e0312e",
+            "nombre": "Fibra optica",
+            "fecha": "2024-05-13 20:53:04.586056",
+            "cantidad": 4,
+            "estado": "pagado"
+        },
+        {
+            "codigo": "pip081",
+            "nombre": "Prepago",
+            "fecha": "2024-05-13 20:54:19.883692",
+            "cantidad": 4,
+            "estado": "deuda"
+        },
+        {
+            "codigo": "6eeb22bb-327f-4087-b45d-aa99b31b83e1",
+            "nombre": "Portatil Lenovo 15ALC6 R5 8GB 128GB +1TB W11 Azul",
+            "fecha": "2024-05-13 21:03:40.434567",
+            "cantidad": 8,
             "estado": "pagado"
         }
+    ],
+    "categorias": [
+        "hogar",
+        "celulares",
+        "servicios moviles",
+        "computadores",
+        "streaming",
+        "accesorios tecnologicos",
+        "seguridad digital"
     ]
 }

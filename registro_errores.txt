@@ -1,0 +1,16 @@
+2024-05-13 18:17:04 Error: Valor invalido
+2024-05-13 18:21:29 Error: Valor invalido
+2024-05-13 18:26:03 Error: Numero de telefono invalido!
+2024-05-13 19:15:53 Error: Valor invalido
+2024-05-13 19:17:48 Error: Valor invalido
+2024-05-13 20:08:18 Error: Numero de telefono invalido!
+2024-05-13 20:16:13 Error: Valor invalido
+2024-05-13 20:16:17 Error: Valor invalido
+2024-05-13 20:16:54 Error: Valor invalido
+2024-05-13 20:17:06 Error: Valor invalido
+2024-05-13 20:53:17 Error: Valor invalido
+2024-05-13 20:56:56 Error: Cantidad invalida!
+2024-05-13 20:57:58 Error: Cantidad invalida!
+2024-05-13 20:59:02 Error: Valor invalido
+2024-05-13 20:59:52 Error: Cantidad invalida!
+2024-05-13 21:01:09 Error: Valor invalido

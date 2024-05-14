@@ -1,5 +1,7 @@
 from menus import*
 import uuid
+from datetime import datetime
+from menus import*
 
 def codigo_unico():
     codigo= str(uuid.uuid4())
@@ -13,10 +15,16 @@ def registrar_clientes(datos):
     cliente["codigo"]= codigo_unico()
     print("El codigo unico del cliente es "+cliente["codigo"])
     cliente["email"]= input("Ingresa un email valido del cliente: ")
-    telefono= input("Ingresa el telefono del cliente: ")
-    while not len(telefono) == 10:
-        print("Numero de telefono invalido")
-        telefono= input("Ingresa el telefono del cliente: ")
+    try:
+        telefono= int(input("Ingresa el telefono del cliente: "))
+        while not len(str(telefono)) == 10:
+            print("Numero de telefono invalido")
+            telefono= int(input("Ingresa el telefono del cliente: "))
+    except Exception:
+        Error= "Numero de telefono invalido!"
+        print (Error)
+        registrar_txt(Error)
+        telefono= 0
     
     cliente["telefono"]= telefono
     cliente["ciudad"]= input("Ingresa la ciudad donde vive: ")
@@ -34,8 +42,10 @@ def actualizar_clientes(datos):
     datos= dict(datos)
     print("-------------------------------------------------------------------------")
     usuario= input("Ingresa el codigo del cliente a cambiar: ")
-    for i in range(len(datos["clientes"])):
-        if usuario== datos["clientes"][i]["codigo"]:
+    encontrado= False
+    for cliente in datos["clientes"]:
+        if usuario== cliente["codigo"]:
+            encontrado= True
             while True: 
                 print("Que datos quieres actualizar\n1.Nombre\n2.Codigo\n3.Email\n4.Telefono\n5.Ciudad\n6.Direccion\n7.Salir")
                 opcion= opc()
@@ -43,42 +53,53 @@ def actualizar_clientes(datos):
                     print("Ingresa una opcion valida\n")
                     opcion =opc()
                 if opcion==1:
-                    datos["clientes"][i]["nombre"]= input("Ingrese el nuevo nombre del cliente: ")
+                    cliente["nombre"]= input("Ingrese el nuevo nombre del cliente: ")
                     print("guardado!")
                 elif opcion==2:
-                        codigo_nuevo= datos["clientes"][i]["codigo"]= codigo_unico()
+                        codigo_nuevo= cliente["codigo"]= codigo_unico()
                         print("guardado!")
                         print("El codigo nuevo del cliente "+codigo_nuevo)
                 elif opcion==3:
-                        datos["clientes"][i]["email"]= input("Ingrese el nuevo email del cliente: ")
+                        cliente["email"]= input("Ingrese el nuevo email del cliente: ")
                         print("guardado!")
                 elif opcion==4: 
-                        telefono= input("Ingresa el telefono del cliente: ")
-                        while not len(telefono) == 10:
-                            print("Numero de telefono invalido")
-                            telefono= input("Ingresa el telefono del cliente: ")
-                        datos["clientes"][i]["telefono"]=telefono
-                        print("guardado!")
+                    try:
+                        telefono= int(input("Ingresa el telefono del cliente: "))
+                        while not len(str(telefono)) == 10:
+                            print("Numero de telefono incompleto, revisalo de nuevo!")
+                            telefono= int(input("Ingresa el telefono del cliente: "))
+                    except Exception:
+                        Error= "Numero de telefono invalido!"
+                        print (Error)
+                        registrar_txt(Error)
+                    cliente["telefono"]=telefono
+                    print("guardado!")
                 elif opcion==5:
-                    datos["clientes"][i]["ciudad"]= input("Ingrese la nueva ciudad del cliente: ")
+                    cliente["ciudad"]= input("Ingrese la nueva ciudad del cliente: ")
                     print("guardado!")
                 elif opcion==6:
-                    datos["clientes"][i]["direccion"]= input("Ingrese la nueva direccion del cliente: ")
+                    cliente["direccion"]= input("Ingrese la nueva direccion del cliente: ")
                     print("guardado!")
                 else:
                     print("Saliste de actualizar clientes!")
                     break
+    if encontrado== False:
+        print("Codigo de usuario no encontrado")
     return datos
 
 def eliminar_usuario(datos):
     datos= dict(datos)
     print("-------------------------------------------------------------------------")
     usuario= input("Ingresa el codigo del cliente a eliminar: ")
-    for i in range(len(datos["clientes"])):
+    encontrado= False
+    for i in range (len(datos["clientes"])):
         if usuario== datos["clientes"][i]["codigo"]:
+            encontrado= True
             datos["clientes"].pop(i)
             print("Usuario eliminado!")
             return datos
+    if encontrado== False:
+        print("Codigo de usuario no encontrado")
     return datos
 
 def listar_usuarios(datos):
@@ -86,11 +107,11 @@ def listar_usuarios(datos):
     indice= 1
     print("-------------------------------------------------------------------------")
     print("Lista de clientes\n")
-    for i in range(len(datos["clientes"])):
-        print(str(indice)+"."+" Nombre: " + datos["clientes"][i]["nombre"]+ " - "+ "Codigo: "+datos["clientes"][i]["codigo"])
+    for cliente in datos["clientes"]:
+        print(str(indice)+"."+" Nombre: " + cliente["nombre"]+ " - "+ "Codigo: "+ cliente["codigo"])
         print("")
         indice+=1
-#mehorar
+
 def categoria_clientes_claro(datos):
     datos= dict(datos)
     clientes_nuevos=[]
@@ -106,49 +127,75 @@ def categoria_clientes_claro(datos):
         else:
             clientes_leales.append(cliente_completo)
     
-    print("")    
-    print("Estos son los nuevos clientes Claro!: \n")
-    cont=1
-    contr=1
-    contl=1
-    for i in clientes_nuevos:
-        print(str(cont)+". "+i)
-        cont+=1
-    
-    print("")
-    print("Estos son los clientes regulares de Claro!: \n")
-    for i in clientes_regulares:
-        print(str(contr)+". "+i)
-        contr+=1
-
-    print("")
-    print("Estos son los clientes leales a Claro!: \n")
-    for i in clientes_leales:
-        print(str(contl)+". "+i)
-        contl+=1
+    print("Bienvenido a las categorias de Clientes Claro!, ¿Que quieres ver?:\n1. Clientes Nuevos\n2. Clientes Regulares\n3. Clientes Leales\n4. Salir\n")
+    opcion= opc()
+    while opcion not in [1,2,3,4]:
+        print("Ingresa una opcion valida\n")
+        opcion =opc()
+    if opcion==1:
+        print("")    
+        print("Estos son los nuevos clientes Claro!: \n")
+        cont=1
+        for i in clientes_nuevos:
+            print(str(cont)+". "+i)
+            cont+=1
+    elif opcion==2:
+        contr=1
+        print("")
+        print("Estos son los clientes regulares de Claro!: \n")
+        for i in clientes_regulares:
+            print(str(contr)+". "+i)
+            contr+=1
+    elif opcion==3: 
+        contl=1
+        print("")
+        print("Estos son los clientes leales a Claro!: \n")
+        for i in clientes_leales:
+            print(str(contl)+". "+i)
+            contl+=1
+    else:
+        print("Decidiste salir de categorias de Claro!")
 
 def interacciones_usuarios(datos):
     datos=dict(datos)
+
     codigo_cliente= input("Ingresa el codigo del cliente: ")
+    encontrado= False
     for cliente in datos["clientes"]:
         if codigo_cliente == cliente["codigo"]:
+            encontrado= True
+            print("Bienvenido al historial de interacciones de Clientes Claro!, ¿Que quieres ver?:\n1. Interacciones con Servicio al Cliente\n2. Interacciones con Reclamaciones\n3. Interacciones con Sugerencias\n4. Salir")
+            print(f"Accediste al Historial de {cliente['nombre'].tittle()}")
             print("")
-            print("Interacciones con servicio al cliente: ")
-            for i in cliente["servicio_al_cliente"]:
-                print(i)
-            print("")
-            print("Interacciones con Reclamaciones:")
-            for i in cliente["reclamaciones"]:
-                print(i)
-            print("")
-            print("Interacciones con Sugerencias:")
-            for i in cliente["sugerencias"]:
-                print(i)
+            opcion= opc()
+            while not opcion in [1,2,3,4]:
+                print("Ingresa una opcion valida\n")
+                opcion =opc()
+            if opcion==1:
+                print("Interacciones con servicio al cliente: ")
+                for i in cliente["servicio_al_cliente"]:
+                    print(i)
+                    print("")
+            elif opcion==2:
+                print("Interacciones con Reclamaciones:")
+                for i in cliente["reclamaciones"]:
+                    print(i)
+                    print("")
+            elif opcion==3:
+                print("Interacciones con Sugerencias:")
+                for i in cliente["sugerencias"]:
+                    print(i)
+                    print("")
+            else:
+                print("Decidiste salir de Historial de interacciones de Clientes Claro!")
+    if encontrado== False:
+        print("Codigo de usuario no encontrado")
     return datos
+
 #servicios
 def registrar_servicios(datos):
     datos= dict(datos)
-    categorias= ["hogar", "celulares", "servicios moviles", "computadores", "streaming","accesorios tecnologicos", "seguridad digital" ]
+    categorias= datos["categorias"]
     servicio ={}
     print("-------------------------------------------------------------------------")
     servicio["nombre_serv"]= input("Ingresa el nombre del servicio: ")
@@ -174,8 +221,10 @@ def actualizar_servicios(datos):
     datos= dict(datos)
     print("-------------------------------------------------------------------------")
     codigo_serv= input("Ingresa el codigo del servicio a cambiar: ")
-    for i in range(len(datos["servicios"])):
-        if codigo_serv== datos["servicios"][i]["codigo"]:
+    encontrado= False
+    for servicio in datos["servicios"]:
+        if codigo_serv== servicio["codigo"]:
+            encontrado= True
             while True: 
                 print("Que datos quieres actualizar\n1.Nombre\n2.Codigo\n3.Categoria\n4.Descripcion\n5.Precio\n6.Salir")
                 opcion= opc()
@@ -183,35 +232,45 @@ def actualizar_servicios(datos):
                     print("Ingresa una opcion valida\n")
                     opcion =opc()
                 if opcion==1:
-                    datos["servicios"][i]["nombre_serv"]= input("Ingrese el nuevo nombre del servicio: ")
+                    servicio["nombre_serv"]= input("Ingrese el nuevo nombre del servicio: ")
                     print("guardado!")
                 elif opcion==2:
-                        codigo_nuevo= datos["servicios"][i]["codigo"]= codigo_unico()
+                        codigo_nuevo= servicio["codigo"]= codigo_unico()
                         print("guardado!")
                         print("El codigo nuevo del servicio es "+codigo_nuevo)
                 elif opcion==3:
-                        datos["servicios"][i]["categoria"]= input("Ingrese la nueva categoria del servicio: ")
+                        categoria= input("Ingrese la nueva categoria del servicio: ").lower()
+                        while not categoria in datos["categorias"]:
+                            print("No esta en las categorias disponibles!")
+                            categoria= input("Ingrese la nueva categoria del servicio: ").lower()
+                        servicio["categoria"]= categoria
                         print("guardado!")
                 elif opcion==4:
-                    datos["servicios"][i]["descripcion"]= input("Ingrese la nueva descripcion del servicio: ")
+                    servicio["descripcion"]= input("Ingrese la nueva descripcion del servicio: ")
                     print("guardado!")
                 elif opcion==5:
-                    datos["servicios"][i]["precio"]= input("Ingrese el precio actualizado del servicio: ")
+                    servicio["precio"]= input("Ingrese el precio actualizado del servicio: ")
                     print("guardado!")
                 else:
                     print("Saliste de actualizar servicios!")
                     break
+    if encontrado== False:
+        print("Codigo de servicio no encontrado")
     return datos
 
 def eliminar_servicio(datos):
     datos= dict(datos)
     print("-------------------------------------------------------------------------")
-    servicio= input("Ingresa el codigo del servicio a eliminar: ")
-    for i in range(len(datos["clientes"])):
-        if servicio== datos["servicios"][i]["codigo"]:
-            datos["servicios"].pop(i)
+    servicio_codigo= input("Ingresa el codigo del servicio a eliminar: ")
+    encontrado= False
+    for i in range (len(datos["servicios"])):
+        if servicio_codigo== datos["servicios"][i]["codigo"]:
+            encontrado= True
+            datos["servicios"].pop(servicio_codigo)
             print("Servicio eliminado!")
             return datos
+    if encontrado== False:
+        print("Codigo de servicio no encontrado")
     return datos
 
 def listar_servicios(datos):
@@ -219,15 +278,15 @@ def listar_servicios(datos):
     indice= 1
     print("-------------------------------------------------------------------------")
     print("Lista de servicios\n")
-    for i in range(len(datos["servicios"])):
-        print(str(indice)+"."+" Nombre: " + datos["servicios"][i]["nombre_serv"]+ " - "+ "Codigo: "+datos["servicios"][i]["codigo"])
+    for servicio in datos["servicios"]:
+        print(str(indice)+"."+" Nombre: " + servicio["nombre_serv"]+ " - "+ "Codigo: "+servicio["codigo"])
         print("")
         indice+=1
 
 #productos 
 def registrar_productos(datos):
     datos= dict(datos)
-    categorias= ["hogar", "celulares", "servicios moviles", "computadores", "streaming","accesorios tecnologicos", "seguridad digital" ]
+    categorias= datos["categorias"]
     producto ={}
     print("-------------------------------------------------------------------------")
     producto["nombre"]= input("Ingresa el nombre del producto: ")
@@ -253,8 +312,10 @@ def actualizar_productos(datos):
     datos= dict(datos)
     print("-------------------------------------------------------------------------")
     codigo_producto= input("Ingresa el codigo del producto a cambiar: ")
-    for i in range(len(datos["productos"])):
-        if codigo_producto== datos["productos"][i]["codigo"]:
+    encontrado= False
+    for producto in datos["productos"]:
+        if codigo_producto== producto["codigo"]:
+            encontrado= True
             while True: 
                 print("Que datos quieres actualizar\n1.Nombre\n2.Codigo\n3.Marca\n4.Categoria\n5.Caracteristicas\n6.Garantia\n7.Precio\n8.Salir")
                 opcion= opc()
@@ -262,41 +323,51 @@ def actualizar_productos(datos):
                     print("Ingresa una opcion valida\n")
                     opcion =opc()
                 if opcion==1:
-                    datos["productos"][i]["nombre"]= input("Ingrese el nuevo nombre del producto: ")
+                    producto["nombre"]= input("Ingrese el nuevo nombre del producto: ")
                     print("guardado!")
                 elif opcion==2:
-                    codigo_nuevo= datos["productos"][i]["codigo"]= codigo_unico()
+                    codigo_nuevo= producto["codigo"]= codigo_unico()
                     print("guardado!")
-                    print("El codigo nuevo del servicio es "+codigo_nuevo)
+                    print("El codigo nuevo del producto es "+codigo_nuevo)
                 elif opcion==3:
-                        datos["productos"][i]["marca"]= input("Ingrese la nueva marca del producto: ")
+                        producto["marca"]= input("Ingrese la nueva marca del producto: ")
                         print("guardado!")
                 elif opcion==4:
-                    datos["productos"][i]["categoria"]= input("Ingrese la nueva categoria del producto: ")
+                    categoria= input("Ingrese la nueva categoria del producto: ").lower()
+                    while not categoria in datos["categorias"]:
+                        print("No esta en las categorias disponibles!")
+                        categoria= input("Ingrese la nueva categoria del producto: ").lower()
+                    producto["categoria"]= categoria
                     print("guardado!")
                 elif opcion==5:
-                    datos["productos"][i]["caracteristicas"]= input("Ingrese las caracteristicas actualizadas del producto: ")
+                    producto["caracteristicas"]= input("Ingrese las caracteristicas actualizadas del producto: ")
                     print("guardado!")
                 elif opcion==6:
-                    datos["productos"][i]["garantia"]= input("Ingrese la nueva garantia del producto: ")
+                    producto["garantia"]= input("Ingrese la nueva garantia del producto: ")
                     print("guardado!")
                 elif opcion==7:
-                    datos["productos"][i]["precio"]= input("Ingrese el precio actualizado del producto: ")
+                    producto["precio"]= input("Ingrese el precio actualizado del producto: ")
                     print("guardado!")
                 else:
                     print("Saliste de actualizar productos!")
                     break
+    if encontrado== False:
+        print("Codigo de producto no encontrado")
     return datos
     
 def eliminar_producto(datos):
     datos= dict(datos)
     print("-------------------------------------------------------------------------")
     producto= input("Ingresa el codigo del producto a eliminar: ")
-    for i in range(len(datos["clientes"])):
+    encontrado= False
+    for i in range (len(datos["productos"])):
         if producto== datos["productos"][i]["codigo"]:
+            encontrado= True
             datos["productos"].pop(i)
             print("Producto eliminado!")
             return datos
+    if encontrado== False:
+        print("Codigo de producto no encontrado")
     return datos
 
 def listar_productos(datos):
@@ -304,8 +375,8 @@ def listar_productos(datos):
     indice= 1
     print("-------------------------------------------------------------------------")
     print("Lista de productos\n")
-    for i in range(len(datos["productos"])):
-        print(str(indice)+"."+" Nombre: " + datos["productos"][i]["nombre"]+ " - "+ "Codigo: "+datos["productos"][i]["codigo"])
+    for producto in datos["productos"]:
+        print(str(indice)+"."+" Nombre: " + producto["nombre"]+ " - "+ "Codigo: "+ producto["codigo"])
         print("")
         indice+=1
 
@@ -313,56 +384,80 @@ def listar_productos(datos):
 def registrar_compra(datos):
     datos= dict(datos)
     codigo= input("Ingresa tu codigo personal de cliente Claro: ")
-    for i in range(len(datos["clientes"])):
-        if codigo == datos["clientes"][i]["codigo"]:
+    encontrado= False
+    servicio_encontrado= False
+    producto_encontrado= False
+    for cliente in datos["clientes"]:
+        if codigo == cliente["codigo"]:
+            encontrado= True
             print("¿Que deseas adquirir?:\n1.Servicios\n2.Productos\n3.Salir")
             opcion=opc()
             while not opcion in [1,2,3]:
                 opcion =opc()
                 print("Escoge una opcion valida\n")
             if opcion==1:
-                #marca excepcion
-                cantidad_compra= int(input("Ingresa la cantidad del servicio que vas a adquirir: "))
+                try:
+                    cantidad_compra= int(input("Ingresa la cantidad del servicio que vas a adquirir: "))
+                except Exception:
+                    error= "Cantidad no valida"
+                    print(error)
+                    registrar_txt(error)
+                    cantidad_compra= 0
                 if cantidad_compra==0:
                     break
                 codigo_servicio= input("Ingresa el codigo del servicio que vas a adquirir: ")
                 for servicio in datos["servicios"]:
                     if codigo_servicio== servicio["codigo"]:
-                        compras_anteriores= datos["clientes"][i]["compras"]
+                        servicio_encontrado= True
+                        compras_anteriores= cliente["compras"]
                         compras_totales= cantidad_compra + compras_anteriores
                         servicio_comprado= (servicio["nombre_serv"]+ " Cantidad: "+ str(cantidad_compra))
-
-                        datos["clientes"][i]["compras"]= compras_totales
-                        datos["clientes"][i]["adquiridos"].append(servicio_comprado)
+                        cliente["compras"]= compras_totales
+                        cliente["adquiridos"].append(servicio_comprado)
                         print("Gracias!, tu compra fue realizada")
+                if servicio_encontrado== False:
+                    print("Codigo de servicio no encontrado")
+                    
             elif opcion==2:
-                #marca excepcion
-                cantidad_compra= int(input("Ingresa la cantidad del producto que vas a adquirir: "))
+                try:
+                    cantidad_compra= int(input("Ingresa la cantidad del producto que vas a adquirir: "))
+                except Exception:
+                    error= "Cantidad no valida"
+                    print(error)
+                    registrar_txt(error)
+                    cantidad_compra= 0
                 if cantidad_compra==0:
                     break
                 codigo_producto= input("Ingresa el codigo del producto que vas a adquirir: ")
                 for producto in datos["productos"]:
                     if codigo_producto== producto["codigo"]:
-                        compras_anteriores= datos["clientes"][i]["compras"]
+                        producto_encontrado= True
+                        compras_anteriores= cliente["compras"]
                         compras_totales= cantidad_compra + compras_anteriores
                         producto_comprado= (producto["nombre"]+ " Cantidad: " + str(cantidad_compra))
                         producto_vendido= producto["cantidad_vendida"]
                         total_producto_ahora= producto_vendido+ cantidad_compra
-
                         producto["cantidad_vendida"]= total_producto_ahora
-                        datos["clientes"][i]["compras"]= compras_totales
-                        datos["clientes"][i]["adquiridos"].append(producto_comprado)
+                        cliente["compras"]= compras_totales
+                        cliente["adquiridos"].append(producto_comprado)
                         print("Gracias!, tu compra fue realizada")
+                if producto_encontrado== False:
+                    print("Codigo de producto no encontrado")
             else:
                 print("Saliste de Adquiere los productos Claro!")
+    if encontrado== False:
+        print("Codigo de cliente no encontrado")
+
     return datos
 
 def encuesta_publicidad(datos):
     datos= dict(datos)
     publicidad_eleccion=[]
     codigo= input("Ingresa tu codigo usuario Claro!: ")
-    for i in range(len(datos["clientes"])):
-        if codigo== datos["clientes"][i]["codigo"]:
+    encontrado= False
+    for cliente in datos["clientes"]:
+        if codigo== cliente["codigo"]:
+            encontrado= True
             celulares= 0
             hogar= 0
             computadores=0
@@ -478,17 +573,21 @@ def encuesta_publicidad(datos):
             max_puntuacion= max(categorias.values())
             categorias_maximas= [categoria for categoria,puntuacion in categorias.items() if puntuacion== max_puntuacion]
             publicidad_eleccion.append(categorias_maximas)
-            datos["clientes"][i]["publicidad"]= publicidad_eleccion
+            cliente["publicidad"]= publicidad_eleccion
             print("Gracias por responder! tus resultados se veran reflejados en 'Hechos especialmente para ti'")
+    if encontrado== False:
+        print("Codigo de cliente no encontrado")
     return datos
 
 def publicidad(datos): 
     datos= dict(datos)
     codigo= input("Ingresa tu codigo personal de cliente Claro: ")
+    encontrado= False
     print(" ")
     print ("Tenemos estos servicios solo para ti!\n")
     for cliente in datos["clientes"]:
         if codigo== cliente["codigo"]:
+            encontrado= True
             categoria_mostrar= cliente["publicidad"][0]
             for servicio in datos["servicios"]:
                 if servicio["categoria"] in categoria_mostrar:
@@ -503,45 +602,59 @@ def publicidad(datos):
                     print(producto["caracteristicas"])
                     print("$"+producto["precio"])
                     print(" ")
+    if encontrado== False:
+        print("Codigo de cliente no encontrado")
     return datos
 
 def servicio_al_cliente(datos):
     datos=dict(datos)
     codigo= input("Ingresa tu codigo personal de cliente Claro: ")
+    encontrado= False
     print(" ")
-    for i in range (len(datos["clientes"])):
-        if codigo== datos["clientes"][i]["codigo"]:
-            print(f"Hola {datos['clientes'][i]['nombre']}, recuerda que estamos aqui para ayudarte en todo lo que necesites. Si tienes alguna pregunta o requerimiento, no dudes en contactarnos. Estamos disponibles para brindarte el mejor servicio posible.")
+    for cliente in datos["clientes"]:
+        if codigo== cliente["codigo"]:
+            encontrado= True 
+            print(f"Hola {cliente['nombre']}, recuerda que estamos aqui para ayudarte en todo lo que necesites. Si tienes alguna pregunta o requerimiento, no dudes en contactarnos. Estamos disponibles para brindarte el mejor servicio posible.")
             comentario= input("Por favor ingresa tu comentario o problema, un tecnico te respondera en momentos: ")
-            datos["clientes"][i]["servicio_al_cliente"].append(comentario)
+            cliente["servicio_al_cliente"].append(comentario)
             print("Analizaremos tu comentario detalladamente, cierra el programa para cargarlo!")
             print("Gracias por ser parte de la familia Claro Colombia!")
+    if encontrado== False:
+        print("Codigo de cliente no encontrado")
     return datos 
 
 def reclamaciones(datos):
     datos=dict(datos)
     codigo= input("Ingresa tu codigo personal de cliente Claro: ")
+    encontrado= False
     print(" ")
-    for i in range (len(datos["clientes"])):
-        if codigo== datos["clientes"][i]["codigo"]:
-            print(f"Hola {datos['clientes'][i]['nombre']}, entendemos lo importante que es tener un servicio confiable y de calidad, por lo que estamos comprometidos a resolver cualquier problema que hayas experimentado lo antes posible.")
+    for cliente in datos["clientes"]:
+        if codigo== cliente["codigo"]:
+            encontrado= True
+            print(f"Hola {cliente['nombre']}, entendemos lo importante que es tener un servicio confiable y de calidad, por lo que estamos comprometidos a resolver cualquier problema que hayas experimentado lo antes posible.")
             problema = input("Por favor, proporciona más detalles sobre tu reclamación, incluyendo cualquier numero de referencia o detalle especifico que pueda ayudarnos a entender mejor la situacion. Nuestro equipo esta aqui para escucharte y trabajar contigo para encontrar una solución satisfactoria: ")
-            datos["clientes"][i]["reclamaciones"].append(problema)
+            cliente["reclamaciones"].append(problema)
             print("Cargado! cierra el programa correctamente para actualizarlo en nuestra base de datos\n")
             print("Agradecemos tu paciencia y colaboración mientras trabajamos en esta situación. Tu opinión es fundamental para nosotros y queremos asegurarnos de brindarte el mejor servicio posible.")
+    if encontrado== False:
+        print("Codigo de cliente no encontrado")
     return datos 
 
 def sugerencias(datos):
     datos=dict(datos)
     codigo= input("Ingresa tu codigo personal de cliente Claro: ")
+    encontrado= False
     print(" ")
-    for i in range (len(datos["clientes"])):
-        if codigo== datos["clientes"][i]["codigo"]:
-            print(f"Hola {datos['clientes'][i]['nombre']}, queremos agradecerte por tomarte el tiempo para compartir tus sugerencias con nosotros. Cada comentario que recibimos nos permite entender mejor tus necesidades y expectativas, y nos impulsa a buscar nuevas formas de superarlas.")
+    for cliente in datos["clientes"]:
+        if codigo== cliente["codigo"]:
+            encontrado= True
+            print(f"Hola {cliente['nombre']}, queremos agradecerte por tomarte el tiempo para compartir tus sugerencias con nosotros. Cada comentario que recibimos nos permite entender mejor tus necesidades y expectativas, y nos impulsa a buscar nuevas formas de superarlas.")
             sugerencia = input("Si tienes alguna idea, comentario o sugerencia adicional que te gustaría compartir con nosotros por favor escribela: ")
-            datos["clientes"][i]["sugerencias"].append(sugerencia)
+            cliente["sugerencias"].append(sugerencia)
             print("Cargado! cierra el programa correctamente para actualizarlo en nuestra base de datos\n")
             print("Gracias nuevamente por tu apoyo continuo y por ser parte de la familia Claro. Esperamos seguir siendo tu proveedor de confianza por muchos años más.")
+    if encontrado== False:
+        print("Codigo de cliente no encontrado")
     return datos 
 
 #reportes
@@ -662,3 +775,86 @@ def catalogo_venta(datos):
     else:
         print("Decidiste salir del catalogo de ventas de Claro!")
     
+def registrar_venta(datos):
+    datos= dict(datos)
+    venta= {}
+    encontrado= True
+    print("¿Quieres registrar la venta de:\n1. Servicios\n2. Productos\n3. Salir" )
+    opcion= opc()
+    while not opcion in [1,2,3]:
+        print("Opcion invalida!")
+        opcion=opc()
+    if opcion==1:
+        venta["codigo"]= input("Ingresa el codigo del servicio: ")
+        for servicio in datos["servicios"]:
+            if venta["codigo"]== servicio["codigo"]:
+                encontrado= True
+                venta["nombre"]= servicio["nombre_serv"]
+                print("Nombre del servicio: ", venta["nombre"])
+                venta["fecha"]= str(datetime.now())
+                print("Fecha de venta: ", venta["fecha"])
+                try: 
+                    cantidad= int(input("Ingresa la cantidad del servicio vendida: "))
+                except Exception:
+                    error= "Cantidad invalida!"
+                    print(error)
+                    registrar_txt(error)
+                    break
+                venta["cantidad"]= cantidad 
+                cantidad_anterior= servicio["cantidad_vendida"]
+                total_actual= cantidad_anterior+cantidad
+                servicio["cantidad_vendida"]= total_actual
+                estado = input("Ingresa el estado de la venta (pagado, deuda): ").lower()
+                while estado not in ["pagado", "deuda"]:
+                    print("Estado de venta no valido!")
+                    estado = input("Ingresa el estado de la venta (pagado, deuda): ").lower()
+                venta["estado"]= estado
+                datos["ventas"].append(venta)
+                print("Venta cargada!\nCierra el programa para cargar correctamente la base de datos")
+        if encontrado== False:
+            print("No se encontro el codigo del servicio")
+        return datos
+    elif opcion==2:
+        venta["codigo"]= input("Ingresa el codigo del producto: ")
+        for producto in datos["productos"]:
+            if venta["codigo"]== producto["codigo"]:
+                encontrado= True
+                venta["nombre"]= producto["nombre"]
+                print("Nombre del producto: ", venta["nombre"])
+                venta["fecha"]= str(datetime.now())
+                print("Fecha de venta: ", venta["fecha"])
+                try: 
+                    cantidad= int(input("Ingresa la cantidad del producto vendida: "))
+                except Exception:
+                    error= "Cantidad invalida!"
+                    print(error)
+                    registrar_txt(error)
+                    break
+                venta["cantidad"]= str(cantidad)
+                cantidad_anterior= producto["cantidad_vendida"]
+                total_actual= cantidad_anterior+cantidad
+                producto["cantidad_vendida"]= total_actual
+                estado = input("Ingresa el estado de la venta (pagado, deuda): ").lower()
+                while estado not in ["pagado", "deuda"]:
+                    print("Estado de venta no valido!")
+                    estado = input("Ingresa el estado de la venta (pagado, deuda): ").lower()
+                venta["estado"]= estado
+                datos["ventas"].append(venta)
+                print("Venta cargada!\nCierra el programa para cargar correctamente la base de datos")
+        if encontrado== False:
+            print("No se encontro el codigo del producto")
+    else:
+        print("Decidiste salir del registro de ventas de Claro!")
+
+    return datos
+
+def listar_ventas(datos):
+    datos= dict(datos)
+    for venta in datos["ventas"]:
+        print("Vendido:" + venta["nombre"])
+        print("Codigo: " + venta["codigo"])
+        print("Cantidad: "+ str(venta['cantidad']))
+        print("Fecha: "+ venta["fecha"])
+        print("Estado: "+ venta["estado"])
+        print("")
+    return datos

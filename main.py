@@ -70,7 +70,7 @@ while True:
                     print("")
                     productos_servicios()
                     opcion= opc()
-                    while opcion not in [1,2,3]:
+                    while opcion not in [1,2,3,4]:
                         opcion =opc()
                         print("Ingresa una opcion valida\n")
 #servicios
@@ -110,6 +110,8 @@ while True:
                         else:
                             print("Decidiste salir de Productos!")
                         
+                    elif opcion== 3:
+                        datos= manejar_categorias(datos)
                     else:
                         print("Decidiste salir Productos y Servicios, adios!")
 #reportes
